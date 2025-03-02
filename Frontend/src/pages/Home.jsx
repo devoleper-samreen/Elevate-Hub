@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom"
+
 function Home() {
     return (
-        <div className="bg-green-100 text-white">
+        <div className="text-white">
 
             {/* Hero Section */}
-            <section className="min-h-screen flex justify-between items-center px-14">
+            <section className="min-h-screen flex justify-between items-center px-14 bg-green-100">
                 <div className="text-left mt-16">
                     <h1 className="text-7xl font-extrabold text-green-700">Elevate Hub:</h1>
                     <p className="text-6xl font-extrabold text-green-700">your journey, our guidance</p>
@@ -25,21 +27,48 @@ function Home() {
                 />
             </section>
 
+            {/* about Section */}
+            <section className="min-h-screen flex justify-between items-center px-14 gap-4 bg-gray-100">
+                {/* Hero Image */}
+                <img
+                    src='https://cdn.pixabay.com/photo/2024/07/14/14/42/woman-8894656_1280.jpg'
+                    alt="Hero"
+                    className="mt-16 rounded-lg shadow-xl h-[350px] w-[500px]"
+                />
+
+                <div className="mt-16 rounded p-4 shadow-lg bg-gray-200">
+                    <h1 className="text-5xl font-extrabold text-black">Create your carear on ElevateHub</h1>
+                    <p className="mt-8 text-black text-xl">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum totam architecto saepe ea, quia vitae ipsa error ad fugiat fugit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum, sequi.
+                    </p>
+                    <button className="mt-10 bg-blue-500 px-8 py-3 rounded-xl text-white font-semibold">
+                        Join ElevateHub
+                    </button>
+                    <span className="text-blue-500 font-bold text-lg ml-3">Discover More</span>
+
+                </div>
+            </section>
+
             {/* Features Section */}
             <section className="py-16 px-4 bg-white text-black">
-                <h2 className="text-3xl font-bold text-center mb-8">Why Choose Us</h2>
-                <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
-                    <div className="bg-white p-6 rounded-lg shadow-md">
+                <h2 className="text-3xl font-bold text-center mb-8">Unlock Your Growth Journey With Elevate Hub</h2>
+                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat doloremque sequi illo! Quisquam quod necessitatibus deserunt quam dolorem, vero provident voluptates velit optio iste adipisci, eveniet neque quas culpa. Nostrum.</p>
+                <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 mt-16">
+                    <div className="bg-white p-6 rounded-lg shadow-2xl">
                         <h3 className="text-xl font-semibold mb-2">Expert Mentors</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum itaque similique aliquid molestiae placeat quia quos maiores delectus ipsam. Voluptatum?</p>
+                        <p>learn more</p>
                     </div>
-                    <div className="bg-white p-6 rounded-lg shadow-md">
+                    <div className="bg-white p-6 rounded-lg shadow-2xl">
                         <h3 className="text-xl font-semibold mb-2">Personalized Guidance</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ab, porro velit! Et modi placeat quae delectus nobis deleniti necessitatibus ipsa.</p>
+                        <p>learn more</p>
                     </div>
-                    <div className="bg-white p-6 rounded-lg shadow-md">
+                    <div className="bg-white p-6 rounded-lg shadow-2xl">
                         <h3 className="text-xl font-semibold mb-2">Success Stories</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Explicabo qui nesciunt provident obcaecati, deleniti perspiciatis quasi. Eaque dolorem quas architecto!</p>
+                        {/* <Link>Learn more</Link> */}
+                        <p>learn more</p>
                     </div>
                 </div>
             </section>
