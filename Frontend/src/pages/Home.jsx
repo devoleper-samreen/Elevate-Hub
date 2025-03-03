@@ -21,7 +21,7 @@ function Home() {
 
                 {/* Hero Image */}
                 <img
-                    src='https://cdn.pixabay.com/photo/2024/07/14/14/42/woman-8894656_1280.jpg'
+                    src='https://media.istockphoto.com/id/1302689118/photo/two-business-women-working-in-office-stock-photo.webp?a=1&b=1&s=612x612&w=0&k=20&c=UJUVOeLgNJVQvfGC3lyFuBaa9o02aqZujtUG81dPI5A='
                     alt="Hero"
                     className="mt-16 rounded-lg shadow-lg h-[350px] w-[500px]"
                 />
@@ -31,7 +31,7 @@ function Home() {
             <section className="min-h-screen flex flex-col-reverse lg:flex-row justify-between items-center px-6 lg:px-14 lg:gap-4 bg-gray-50">
                 {/* Hero Image */}
                 <img
-                    src='https://cdn.pixabay.com/photo/2024/07/14/14/42/woman-8894656_1280.jpg'
+                    src='https://media.istockphoto.com/id/1758688771/photo/successful-partnership.webp?a=1&b=1&s=612x612&w=0&k=20&c=g_lMzsTphUoxPsvEc-hGjUfsIKBGEdJdzj3XhACX4vg='
                     alt="Hero"
                     className="mt-16 rounded-lg shadow-xl h-[350px] w-[600px] lg:w-[500px]"
                 />
