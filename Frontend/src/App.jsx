@@ -10,10 +10,11 @@ function App() {
   return (
     <div className='mx-auto, max-w-screen-3xl'>
       <Toaster position='top-center' />
+      <Nav />
       <BrowserRouter>
         <Routes>
           {
-            Routes.map((route) => (
+            routes.map((route) => (
               <Route key={route.path} path={route.path} element={<RouteElement route={route} />} />
             ))
           }
