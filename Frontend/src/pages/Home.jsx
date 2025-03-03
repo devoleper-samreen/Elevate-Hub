@@ -36,7 +36,7 @@ function Home() {
                     className="mt-16 rounded-lg shadow-xl h-[350px] w-[600px] lg:w-[500px]"
                 />
 
-                <div className="mt-16 rounded p-6 lg:shadow-lg lg:bg-gray-200">
+                <div className="mt-16 rounded lg:p-6 lg:shadow-lg lg:bg-gray-200">
                     <h1 className="text-4xl lg:text-5xl font-extrabold text-black">Create your carear on ElevateHub</h1>
                     <p className="mt-8 text-black text-lg lg:text-xl">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum totam architecto saepe ea, quia vitae ipsa error ad fugiat fugit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum, sequi.
@@ -51,10 +51,10 @@ function Home() {
 
             {/* Features Section */}
             <section className="py-16 px-4 bg-gray-50 text-black">
-                <h2 className="text-3xl font-bold text-center mb-8 px-8">Unlock Your Growth Journey With Elevate Hub</h2>
-                <p className="mb-16 text-center px-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat doloremque sequi illo! Quisquam <br />quod necessitatibus deserunt quam dolorem, vero provident voluptates velit optio <br />iste adipisci, eveniet neque quas culpa. Nostrum.</p>
+                <h2 className="text-3xl font-bold text-center mb-8 lg:px-8">Unlock Your Growth Journey With Elevate Hub</h2>
+                <p className="mb-16 text-center lg:px-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat doloremque sequi illo! Quisquamquod necessitatibus deserunt quam dolorem, vero provident voluptates velit optio iste adipisci, eveniet neque quas culpa. Nostrum.</p>
                 <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6 mt-16">
-                    <div className="bg-white p-6 rounded-lg shadow-2xl">
+                    <div className="bg-white p-6 rounded-lg shadow-lg lg:shadow-2xl">
                         <h3 className="text-xl font-semibold mb-4">Expert Mentors</h3>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum itaque similique aliquid molestiae placeat quia quos maiores delectus ipsam. Voluptatum?</p>
                         <p className="mt-6 font-bold text-green-700">Learn More</p>
