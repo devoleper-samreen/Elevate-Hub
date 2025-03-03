@@ -10,8 +10,8 @@ function App() {
   return (
     <div className='mx-auto, max-w-screen-3xl'>
       <Toaster position='top-center' />
-      <Nav />
       <BrowserRouter>
+        <Nav />
         <Routes>
           {
             routes.map((route) => (

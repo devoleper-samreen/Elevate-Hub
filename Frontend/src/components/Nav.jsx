@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useNavigate } from "react-router-dom"
 
 function Nav() {
+    const navigate = useNavigate()
+    const signupStudentBtnClick = () => navigate("/signup/student")
+    const signupMentorBtnClick = () => navigate("/signup/mentor")
     const [open, setOpen] = useState(false);
 
     return (
@@ -15,13 +19,13 @@ function Nav() {
 
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex gap-4">
-                    <button className="bg-green-600 border px-4 py-3 rounded-xl text-white">
+                    <button className="bg-green-600 border px-4 py-3 rounded-xl text-white" onClick={signupMentorBtnClick}>
                         Become a Mentor with us
                     </button>
                     <button className="text-green-700 px-4 py-2 rounded-full">
                         Sign In
                     </button>
-                    <button className="bg-green-600 text-white px-4 py-2 rounded-lg">
+                    <button className="bg-green-600 text-white px-4 py-2 rounded-lg" onClick={signupStudentBtnClick}>
                         Sign Up
                     </button>
                 </div>

@@ -1,4 +1,5 @@
 import Home from "../pages/Home"
+import Signup from "../components/Signup"
 
 const routes = [
     {
@@ -8,7 +9,12 @@ const routes = [
     },
     {
         path: "/login",
-        element: <Home />,
+        element: <Signup />,
+        isProtected: false
+    },
+    {
+        path: "/signup/:role",
+        element: <Signup />,
         isProtected: false
     }
 ]
