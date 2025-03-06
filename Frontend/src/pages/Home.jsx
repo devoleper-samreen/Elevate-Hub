@@ -11,7 +11,7 @@ function Home() {
                     <p className="mt-8 max-w-[500px] text-green-600 text-xl lg:text-2xl">
                         Every great aciever was inspired by a mentor, Find yours today!
                     </p>
-                    <button className="mt-10 bg-green-700 px-8 py-3 rounded-xl text-white">
+                    <button className="mt-10 bg-green-600 hover:bg-green-700 transition px-8 py-3 rounded-xl text-white">
                         Match with a Mentor
                     </button>
 
@@ -40,7 +40,7 @@ function Home() {
                     <p className="mt-8 text-black text-lg lg:text-xl">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum totam architecto saepe ea, quia vitae ipsa error ad fugiat fugit. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum, sequi.
                     </p>
-                    <button className="mt-10 bg-blue-500 px-8 py-3 rounded-xl text-white font-semibold">
+                    <button className="mt-10 bg-blue-500 hover:bg-blue-600 transition px-8 py-3 rounded-xl text-white font-semibold">
                         Join ElevateHub
                     </button>
                     <span className="text-blue-500 font-bold text-lg ml-3">Discover More</span>

@@ -14,13 +14,13 @@ function Nav() {
             <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
 
                 {/* Logo text */}
-                <div className="text-xl lg:text-3xl font-bold text-green-700">
+                <div className="text-xl lg:text-3xl font-bold text-green-700 cursor-pointer" onClick={() => navigate("/")}>
                     Elevate Hub
                 </div>
 
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex gap-4">
-                    <button className="bg-green-600 border px-4 py-3 rounded-xl text-white" onClick={signupMentorBtnClick}>
+                    <button className="bg-green-600 hover:bg-green-700 transition border px-4 py-3 rounded-xl text-white" onClick={signupMentorBtnClick}>
                         Become a Mentor with us
                     </button>
                     <button className="text-green-700 px-4 py-2 rounded-full"
@@ -28,7 +28,7 @@ function Nav() {
                     >
                         Sign In
                     </button>
-                    <button className="bg-green-600 text-white px-4 py-2 rounded-lg" onClick={signupStudentBtnClick}>
+                    <button className="bg-green-600 hover:bg-green-700 transition text-white px-4 py-2 rounded-lg" onClick={signupStudentBtnClick}>
                         Sign Up
                     </button>
                 </div>
