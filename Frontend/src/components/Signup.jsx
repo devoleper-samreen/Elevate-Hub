@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
+import auth from "../apiManager/auth"
 
 const Signup = () => {
     const { role } = useParams();
@@ -18,10 +19,14 @@ const Signup = () => {
             role
         }
 
-
         try {
+            await auth.signup(formData)
+            reset()
+            toast.success("Account created successfully!")
+            navigate("/signin")
 
         } catch (error) {
+            console.log(error);
 
         }
 

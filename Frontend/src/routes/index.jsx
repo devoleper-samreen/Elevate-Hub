@@ -1,5 +1,6 @@
 import Home from "../pages/Home"
 import Signup from "../components/Signup"
+import Signin from "../components/Signin"
 
 const routes = [
     {
@@ -8,8 +9,8 @@ const routes = [
         isProtected: false
     },
     {
-        path: "/login",
-        element: <Signup />,
+        path: "/signin",
+        element: <Signin />,
         isProtected: false
     },
     {

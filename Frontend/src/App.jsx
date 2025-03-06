@@ -1,6 +1,5 @@
 import './App.css'
 import Nav from "./components/Nav"
-import Home from './pages/Home'
 import { Toaster } from "react-hot-toast"
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import routes from "./routes/index"
