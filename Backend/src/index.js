@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./DB/db.js"
+import routes from "./routes/index.js"
 
 // Config env
 dotenv.config();
@@ -18,6 +19,9 @@ app.use(cors({
 }));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
+
+//main route
+app.use("/api/v1", routes)
 
 
 //DB connection
