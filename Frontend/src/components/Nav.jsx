@@ -10,7 +10,7 @@ function Nav() {
     const [open, setOpen] = useState(false);
 
     return (
-        <nav className="w-full bg-white fixed top-0 left-0">
+        <nav className="w-full bg-white py-1">
             <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
 
                 {/* Logo text */}
