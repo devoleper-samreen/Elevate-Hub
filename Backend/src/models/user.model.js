@@ -1,5 +1,5 @@
 import mongoose from "mongoose"
-import bcrypt from 'bcrypt.js'
+import bcrypt from "bcryptjs"
 
 const userSchema = new mongoose.Schema(
     {
@@ -34,7 +34,7 @@ const userSchema = new mongoose.Schema(
     }
 )
 
-userSchema.pre("save", async (next) => {
+userSchema.pre("save", async function (next) {
     if (this.isModified("password")) {
         this.password = await bcrypt.hash(this.password, 8)
     }
@@ -42,6 +42,8 @@ userSchema.pre("save", async (next) => {
     next()
 })
 
-userSchema.index({ email: 1 })
+// userSchema.index({ email: 1 })
+// Warning: Duplicate schema index on {"email":1} found. 
+// This is often due to declaring an index using both "index: true" and "schema.index()".Please remove the duplicate index definition.
 
 export const User = mongoose.model("User", userSchema)

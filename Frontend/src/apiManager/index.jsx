@@ -27,7 +27,10 @@ AxiosInstances.interceptors.request.use((config) => {
 AxiosInstances.interceptors.response.use(
     (response) => response,
     (error) => {
-        if (error.response?.data.success === 'false') {
+        const errorMessage = error.response?.data?.message
+        errorMessage ? toast.error(errorMessage) : toast.error("somthing went wrong")
+
+        if (error.response?.data.success == 'false') {
             const message = error.response.data.message
             message ? toast.error(message) : toast.error("somthing went wrong")
 
@@ -36,9 +39,6 @@ AxiosInstances.interceptors.response.use(
                 sessionStorage.removeItem(userStorePersist)
                 window.location.href = "/signin"
             }
-        }
-        else {
-            toast.error("Something went wrong again")
         }
         throw error
     }

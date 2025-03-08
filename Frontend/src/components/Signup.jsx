@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import auth from "../apiManager/auth"
+import toast from "react-hot-toast";
 
 const Signup = () => {
     const { role } = useParams();
@@ -20,17 +21,19 @@ const Signup = () => {
         }
 
         try {
-            await auth.signup(formData)
+            const res = await auth.signup(formData)
+            console.log(res);
             reset()
-            toast.success("Account created successfully!")
+            toast.success(res?.data.message || "Account created successfully!")
             navigate("/signin")
 
         } catch (error) {
+            setIsLoading(false)
             console.log(error);
 
         }
-
     }
+
     return (
         <div className="bg-green-100 min-h-screen flex items-center justify-center">
             <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md mt-20">
@@ -131,12 +134,11 @@ const Signup = () => {
 
                 <p className="text-center text-gray-600 mt-6">
                     Already have an account?{" "}
-                    <a
-                        href="#"
+                    <Link to='/signin'
                         className="text-green-600 font-medium hover:underline"
                     >
-                        Login
-                    </a>
+                        Signin
+                    </Link>
                 </p>
             </div>
         </div>
