@@ -1,5 +1,6 @@
 import { data } from "../helper/data"
 import { Link } from "react-router-dom"
+import TopMentors from "../components/TopMentors"
 
 function Home() {
     return (
@@ -82,52 +83,58 @@ function Home() {
                     <div className="flex flex-col w-[700px]">
                         <div className="flex items-center justify-between p-4">
                             <p className="bg-teal-500 h-12 w-12 font-bold text-lg rounded-full">1</p>
-                            <p className="w-[500px]">
+                            <div className="w-[500px]">
                                 <h3 className="text-xl font-semibold text-gray-950">Create Your Profile</h3>
                                 <p className="text-gray-600 text-base">Start your ElevateHub journey by creating a personalized profile. Share your goals, interests, and areas for growth to help us match you with the right mentor.</p>
-                            </p>
+                            </div>
                         </div>
                         <div className="flex items-center justify-between p-4">
                             <p className="bg-blue-500 h-12 w-12 font-bold text-lg rounded-full">2</p>
-                            <p className="w-[500px]">
+                            <div className="w-[500px]">
                                 <h3 className="text-xl font-semibold text-gray-950">Browse Mentor Profiles</h3>
                                 <p className="text-gray-600 text-base">Explore a wide variety of mentors from diverse fields. Use filters to find experts with the skills and experience that match your goals.</p>
-                            </p>
+                            </div>
                         </div>
                         <div className="flex items-center justify-between p-4">
                             <p className="bg-green-500 h-12 w-12 font-bold text-lg rounded-full">3</p>
-                            <p className="w-[500px]">
+                            <div className="w-[500px]">
                                 <h3 className="text-xl font-semibold text-gray-950">Select Your Ideal Mentor</h3>
                                 <p className="text-gray-600 text-base">Review mentor profiles, read testimonials, and choose someone who aligns with your personal or professional growth journey.</p>
-                            </p>
+                            </div>
                         </div>
                         <div className="flex items-center justify-between p-4">
                             <p className="bg-orange-500 h-12 w-12 font-bold text-lg rounded-full">4</p>
-                            <p className="w-[500px]">
+                            <div className="w-[500px]">
                                 <h3 className="text-xl font-semibold text-gray-950">Schedule Your First Session</h3>
                                 <p className="text-gray-600 text-base">Find a time that works for you and your mentor. Schedule your first session and kickstart your growth with expert guidance.</p>
-                            </p>
+                            </div>
                         </div>
                         <div className="flex items-center justify-between p-4">
                             <p className="bg-yellow-500 h-12 w-12 font-bold text-lg rounded-full">5</p>
-                            <p className="w-[500px]">
+                            <div className="w-[500px]">
                                 <h3 className="text-xl font-semibold text-gray-950">Achieve Milestones Together</h3>
                                 <p className="text-gray-600 text-base">Work closely with your mentor to develop key skills, stay motivated, and hit your personal or professional milestones.</p>
-                            </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
+
             {/*Right Mentor for You*/}
-            <section class="px-8 py-20 bg-gray-100">
-                <div class="container mx-auto">
-                    <div class="flex flex-col items-center text-center md:flex-row md:text-left md:items-start">
-                        <div class="mb-8 md:w-1/3 md:mr-12">
-                            <h2 class="text-4xl font-extrabold text-green-700">Find the Right Mentor for You</h2>
-                            <p class="mt-4 text-lg text-gray-700">Unlock growth opportunities with expert mentors. Whether you're aiming to boost your career, enhance your skills, or explore new fields, Elevate Hub has the perfect mentor for you.</p>
-                            <a class="inline-flex items-center px-6 py-3 mt-6 text-white transition duration-300 bg-green-500 rounded-md shadow-md hover:bg-green-600 hover:shadow-lg">Get Started
-                                <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 12 12"><path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z"></path></svg></a></div><div class="grid flex-grow grid-cols-2 gap-6 md:grid-cols-3"><a href="/" class="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Career Coaches</a>
-                            <a href="/" class="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Business Mentors</a><a href="/" class="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Creative Mentors</a><a href="/" class="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Tech Experts</a><a href="/" class="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Marketing Gurus</a><a href="/" class="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Finance Advisors</a><a href="/" class="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Wellness Coaches</a><a href="/" class="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Education Mentors</a><a href="/" class="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Social Impact Leaders</a></div></div><div class="relative mt-10"><img class="object-cover w-full h-56 sm:h-96 rounded-lg shadow-md" src="https://images.pexels.com/photos/3184419/pexels-photo-3184419.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Mentorship" /><div class="absolute inset-0 bg-green-900 bg-opacity-30 rounded-lg"></div></div></div>
+            <section className="px-8 py-20 bg-gray-100">
+                <div className="container mx-auto">
+                    <div className="flex flex-col items-center text-center md:flex-row md:text-left md:items-start">
+                        <div className="mb-8 md:w-1/3 md:mr-12">
+                            <h2 className="text-4xl font-extrabold text-green-700">Find the Right Mentor for You</h2>
+                            <p className="mt-4 text-lg text-gray-700">Unlock growth opportunities with expert mentors. Whether you're aiming to boost your career, enhance your skills, or explore new fields, Elevate Hub has the perfect mentor for you.</p>
+                            <a className="inline-flex items-center px-6 py-3 mt-6 text-white transition duration-300 bg-green-500 rounded-md shadow-md hover:bg-green-600 hover:shadow-lg">Get Started
+                                <svg className="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 12 12"><path d="M9.707,5.293l-5-5A1,1,0,0,0,3.293,1.707L7.586,6,3.293,10.293a1,1,0,1,0,1.414,1.414l5-5A1,1,0,0,0,9.707,5.293Z"></path></svg></a></div><div className="grid flex-grow grid-cols-2 gap-6 md:grid-cols-3"><a href="/" className="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Career Coaches</a>
+                            <a href="/" className="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Business Mentors</a><a href="/" className="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Creative Mentors</a><a href="/" className="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Tech Experts</a><a href="/" className="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Marketing Gurus</a><a href="/" className="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Finance Advisors</a><a href="/" className="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Wellness Coaches</a><a href="/" className="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Education Mentors</a><a href="/" className="block p-4 text-center transition duration-300 border rounded-lg shadow-sm bg-white text-gray-800  border-green-400 hover:bg-green-500 hover:text-white hover:shadow-lg cursor-not-allowed">Social Impact Leaders</a></div></div><div className="relative mt-10"><img className="object-cover w-full h-56 sm:h-96 rounded-lg shadow-md" src="https://images.pexels.com/photos/3184419/pexels-photo-3184419.jpeg?auto=compress&amp;cs=tinysrgb&amp;dpr=2&amp;h=750&amp;w=1260" alt="Mentorship" /><div className="absolute inset-0 bg-green-900 bg-opacity-30 rounded-lg"></div></div></div>
+            </section>
+
+            {/*top mentor*/}
+            <section className="text-gray-700 bg-gray-200 py-4 my-10">
+                <TopMentors />
             </section>
 
             {/*plans*/}
@@ -135,10 +142,10 @@ function Home() {
                 <h2 className="mb-10 text-5xl font-extrabold text-green-700">
                     Flexible &amp; Affordable Plans
                 </h2>
-                <p class="max-w-3xl mx-auto mb-8 text-lg text-gray-700">
+                <p className="max-w-3xl mx-auto mb-8 text-lg text-gray-700">
                     Choose a plan that fits your growth journey. Elevate Hub offers free access for learners, with premium options for advanced mentorship and exclusive resources.
                 </p>
-                <button class="px-8 py-4 text-lg font-semibold text-white transition-all duration-300 bg-green-500 rounded-full shadow-md hover:bg-green-600 hover:shadow-lg " disabled="">
+                <button className="px-8 py-4 text-lg font-semibold text-white transition-all duration-300 bg-green-500 rounded-full shadow-md hover:bg-green-600 hover:shadow-lg " disabled="">
                     View Pricing Plans
                 </button>
             </section>
@@ -157,7 +164,7 @@ function Home() {
                             <button className="flex items-center justify-between w-full text-left text-lg font-medium text-gray-900 hover:text-green-700">
                                 What is Elevate Hub?
                                 <span className="ml-4 transition-transform transform rotate-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </span>
                             </button>
@@ -168,12 +175,12 @@ function Home() {
                         <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
                             <button className="flex items-center justify-between w-full text-left text-lg font-medium text-gray-900 hover:text-green-700">
                                 How do I become a mentor?
-                                <span class="ml-4 transition-transform transform rotate-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                <span className="ml-4 transition-transform transform rotate-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </span>
                             </button>
-                            <div class="mt-4 text-gray-700 transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
+                            <div className="mt-4 text-gray-700 transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
                                 <p>
                                     Simply click on 'Join as a Mentor', fill out your profile, and start sharing your expertise once approved!
                                 </p>
@@ -183,19 +190,19 @@ function Home() {
                             <button className="flex items-center justify-between w-full text-left text-lg font-medium text-gray-900 hover:text-green-700">
                                 Can I select my own mentor?
                                 <span className="ml-4 transition-transform transform rotate-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </span>
                             </button>
-                            <div class="mt-4 text-gray-700 transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
+                            <div className="mt-4 text-gray-700 transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
                                 <p>Yes! Browse through our list of mentors, check their expertise, and choose the one that fits your needs best.
                                 </p>
                             </div>
                         </div>
                         <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
                             <button className="flex items-center justify-between w-full text-left text-lg font-medium text-gray-900 hover:text-green-700">
-                                Are there any fees for mentorship?<span class="ml-4 transition-transform transform rotate-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                Are there any fees for mentorship?<span className="ml-4 transition-transform transform rotate-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </span>
                             </button>
@@ -206,23 +213,23 @@ function Home() {
                         </div>
                         <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
                             <button className="flex items-center justify-between w-full text-left text-lg font-medium text-gray-900 hover:text-green-700">
-                                How do mentorship sessions work?<span class="ml-4 transition-transform transform rotate-0"><svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                                How do mentorship sessions work?<span className="ml-4 transition-transform transform rotate-0"><svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                 </svg></span>
                             </button>
-                            <div class="mt-4 text-gray-700 transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
+                            <div className="mt-4 text-gray-700 transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
                                 <p>After selecting a mentor, you can schedule sessions via video calls, messaging, or email.
                                 </p>
                             </div>
                         </div>
-                        <div class="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                            <button class="flex items-center justify-between w-full text-left text-lg font-medium text-gray-900 hover:text-green-700">What if I need support?
-                                <span class="ml-4 transition-transform transform rotate-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+                            <button className="flex items-center justify-between w-full text-left text-lg font-medium text-gray-900 hover:text-green-700">What if I need support?
+                                <span className="ml-4 transition-transform transform rotate-0">
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24" stroke="currentColor" fill="none"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                                     </svg>
                                 </span>
                             </button>
-                            <div class="mt-4 text-gray-700 transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
-                                <p>Our dedicated support team is here to assist with any questions or issues you may have.</p></div></div></div><div class="mt-12 text-center"><button class="px-8 py-4 text-lg font-semibold text-white rounded-lg bg-gray-400 cursor-not-allowed" disabled="">Still Have Questions? Contact Us!
+                            <div className="mt-4 text-gray-700 transition-all duration-300 ease-in-out max-h-0 opacity-0 overflow-hidden">
+                                <p>Our dedicated support team is here to assist with any questions or issues you may have.</p></div></div></div><div className="mt-12 text-center"><button className="px-8 py-4 text-lg font-semibold text-white rounded-lg bg-gray-400 cursor-not-allowed" disabled="">Still Have Questions? Contact Us!
                                 </button>
                     </div>
                 </div>
@@ -254,11 +261,11 @@ function Home() {
                     <h2 className="text-xl font-semibold">Stay Connected</h2>
                     <p className="text-sm text-gray-400">Follow us on social media for updates, inspiration, and mentorship tips!</p>
                     <div className="flex justify-center space-x-6">
-                        <a href="#" class="p-3 rounded-full bg-gray-700 hover:bg-[#00DFBD] transition-all duration-300" aria-label="Facebook">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24h11.495v-9.294H9.672v-3.622h3.148V8.413c0-3.118 1.902-4.815 4.678-4.815 1.33 0 2.475.099 2.807.143v3.256h-1.923c-1.51 0-1.802.718-1.802 1.771v2.32h3.6l-.468 3.622h-3.132V24h6.144c.73 0 1.325-.593 1.325-1.326V1.326C24 .593 23.407 0 22.675 0z"></path></svg></a><a href="#" className="p-3 rounded-full bg-gray-700 hover:bg-[#00DFBD] transition-all duration-300" aria-label="Twitter">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.897-.959-2.173-1.555-3.594-1.555-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.247-2.228-.616v.061c0 2.386 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.623-.03-.924-.086.631 1.953 2.445 3.376 4.604 3.416-1.68 1.318-3.809 2.105-6.102 2.105-.394 0-.779-.023-1.17-.067 2.188 1.402 4.768 2.221 7.548 2.221 9.142 0 14.307-7.721 14.307-14.417 0-.219-.005-.436-.015-.653.983-.713 1.833-1.6 2.506-2.614z"></path></svg></a>
+                        <a href="#" className="p-3 rounded-full bg-gray-700 hover:bg-[#00DFBD] transition-all duration-300" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.326v21.348C0 23.407.593 24 1.325 24h11.495v-9.294H9.672v-3.622h3.148V8.413c0-3.118 1.902-4.815 4.678-4.815 1.33 0 2.475.099 2.807.143v3.256h-1.923c-1.51 0-1.802.718-1.802 1.771v2.32h3.6l-.468 3.622h-3.132V24h6.144c.73 0 1.325-.593 1.325-1.326V1.326C24 .593 23.407 0 22.675 0z"></path></svg></a><a href="#" className="p-3 rounded-full bg-gray-700 hover:bg-[#00DFBD] transition-all duration-300" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M23.954 4.569c-.885.392-1.83.656-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.897-.959-2.173-1.555-3.594-1.555-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.247-2.228-.616v.061c0 2.386 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.623-.03-.924-.086.631 1.953 2.445 3.376 4.604 3.416-1.68 1.318-3.809 2.105-6.102 2.105-.394 0-.779-.023-1.17-.067 2.188 1.402 4.768 2.221 7.548 2.221 9.142 0 14.307-7.721 14.307-14.417 0-.219-.005-.436-.015-.653.983-.713 1.833-1.6 2.506-2.614z"></path></svg></a>
                         <a href="#" className="p-3 rounded-full bg-gray-700 hover:bg-[#00DFBD] transition-all duration-300" aria-label="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="w-6 h-6"><path d="M22.23 0H1.77C.79 0 0 .774 0 1.725v20.55C0 23.226.79 24 1.77 24h20.46C23.21 24 24 23.226 24 22.275V1.725C24 .774 23.21 0 22.23 0zM7.12 20.452H3.56V9.084h3.56v11.368zm-1.78-12.85c-1.14 0-2.06-.927-2.06-2.065a2.063 2.063 0 1 1 4.12 0c0 1.138-.92 2.065-2.06 2.065zm15.172 12.85h-3.56v-5.604c0-1.34-.026-3.062-1.865-3.062-1.865 0-2.152 1.454-2.152 2.959v5.707h-3.56V9.084h3.42v1.548h.05c.476-.9 1.636-1.85 3.366-1.85 3.6 0 4.268 2.368 4.268 5.452v6.218z"></path></svg></a></div>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-6 h-6"><path d="M22.23 0H1.77C.79 0 0 .774 0 1.725v20.55C0 23.226.79 24 1.77 24h20.46C23.21 24 24 23.226 24 22.275V1.725C24 .774 23.21 0 22.23 0zM7.12 20.452H3.56V9.084h3.56v11.368zm-1.78-12.85c-1.14 0-2.06-.927-2.06-2.065a2.063 2.063 0 1 1 4.12 0c0 1.138-.92 2.065-2.06 2.065zm15.172 12.85h-3.56v-5.604c0-1.34-.026-3.062-1.865-3.062-1.865 0-2.152 1.454-2.152 2.959v5.707h-3.56V9.084h3.42v1.548h.05c.476-.9 1.636-1.85 3.366-1.85 3.6 0 4.268 2.368 4.268 5.452v6.218z"></path></svg></a></div>
                     <p className="text-xs text-gray-500">
                         © 2025 MentorHub. All Rights Reserved
                         .</p>

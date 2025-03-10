@@ -10,11 +10,30 @@ function TopMentors() {
     const [isLoading, setIsLoading] = useState(false)
     const { setMentorsData } = useMentorStore()
 
+    const selectTopMentor = (mentors) => {
+        const topSelectedMentors = []
+        const totalMentor = mentors.length
+
+        while (topSelectedMentors < 4 && topSelectedMentors.length < totalMentor) {
+            const randomIndex = Math.floor(Math.random() * totalMentor)
+            const randomMentor = mentors[randomIndex]
+            if (!topSelectedMentors.includes(randomMentor)) {
+                topSelectedMentors.push(randomMentor)
+            }
+        }
+
+        return topSelectedMentors
+
+    }
+
     const fetchAllMentors = async () => {
         try {
             const response = await mentorApi.getAllMentors()
+            console.log(response);
+
             const allMentors = response?.data?.mentors || []
             setMentorsData(allMentors)
+            setTopMentors(selectTopMentor(allMentors))
 
         } catch (error) {
             console.log(error);
@@ -26,7 +45,20 @@ function TopMentors() {
     }, [])
 
     return (
-        <div>TopMentors</div>
+        <div>
+            <h1 className='text-3xl font-bold text-green-700 mb-10'>Top Mentors</h1>
+            <div>
+                {topMentors.map((mentor) => (
+                    <li>{mentor.name}</li>
+                ))}
+            </div>
+            <div>
+                <li>Aarav</li>
+                <li>nobita</li>
+                <li>doremon</li>
+                <li>Zayan</li>
+            </div>
+        </div>
     )
 }
 

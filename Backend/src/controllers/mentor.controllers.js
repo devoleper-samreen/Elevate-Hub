@@ -1,4 +1,4 @@
-import { mentorService } from "../services/mentor.service"
+import { mentorService } from "../services/mentor.service.js"
 import { httpStatus } from "../utils/httpStatus.js"
 import { ApiError } from "../helpers/apiError.js"
 
