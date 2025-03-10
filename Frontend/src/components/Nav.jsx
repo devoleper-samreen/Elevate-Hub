@@ -20,7 +20,7 @@ function Nav() {
 
                 {/* Desktop Buttons */}
                 <div className="hidden md:flex gap-4">
-                    <button className="bg-green-600 hover:bg-green-700 transition border px-4 py-3 rounded-xl text-white" onClick={signupMentorBtnClick}>
+                    <button className="bg-green-600 hover:bg-green-700 transition border px-4 py-3 rounded-lg text-white" onClick={signupMentorBtnClick}>
                         Become a Mentor with us
                     </button>
                     <button className="text-green-700 px-4 py-2 rounded-full"
@@ -28,7 +28,7 @@ function Nav() {
                     >
                         Sign In
                     </button>
-                    <button className="bg-green-600 hover:bg-green-700 transition text-white px-4 py-2 rounded-lg" onClick={signupStudentBtnClick}>
+                    <button className="bg-green-500 hover:bg-green-700 transition text-white px-6 py-1 rounded-lg" onClick={signupStudentBtnClick}>
                         Sign Up
                     </button>
                 </div>
