@@ -70,7 +70,7 @@ function Nav() {
                         {open ? <X size={28} /> : <Menu size={28} />}
                     </button>) : (
                         <Dropdown menu={{ items: menuItems }} trigger={["hover"]}>
-                            <button>
+                            <button className="bg-green-400 py-2 px-4 rounded-full text-white font-semibold text-xl">
                                 {user?.name?.charAt(0).toUpperCase() || "SM"}
                             </button>
                         </Dropdown>

@@ -36,7 +36,7 @@ export const signup = async (req, res) => {
 
         return res.status(httpStatus.created).json({
             message: "user created successfully!",
-            user: user
+            user
         })
     } catch (error) {
         throw ApiError(httpStatus.internalServerError, "Error in created user")
