@@ -1,7 +1,8 @@
-import { createUser } from "../services/auth.services.js"
+import { createUser, loginUser } from "../services/auth.services.js"
 import { ApiError } from "../helpers/apiError.js"
 import { httpStatus } from "../utils/httpStatus.js"
 import { User } from "../models/user.model.js"
+import { generateAuthTokens } from "../services/token.service.js"
 
 export const signup = async (req, res) => {
     try {
@@ -44,6 +45,17 @@ export const signup = async (req, res) => {
 
 }
 
-export const signin = (req, res) => {
+export const signin = async (req, res) => {
+    const { email, password } = req.body
+    const user = await loginUser(email, password)
+
+    const token = await generateAuthTokens(user)
+    user.password = undefined
+
+    return res.status(httpStatus.ok).json({
+        message: "Login successfully!",
+        token,
+        user
+    })
 
 }

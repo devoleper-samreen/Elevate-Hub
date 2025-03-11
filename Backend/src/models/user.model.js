@@ -42,6 +42,11 @@ userSchema.pre("save", async function (next) {
     next()
 })
 
+userSchema.methods.isPasswordMatch = async function (password) {
+    return bcrypt.compare(password, this.password)
+
+}
+
 // userSchema.index({ email: 1 })
 // Warning: Duplicate schema index on {"email":1} found. 
 // This is often due to declaring an index using both "index: true" and "schema.index()".Please remove the duplicate index definition.

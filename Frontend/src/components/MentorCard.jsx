@@ -1,8 +1,14 @@
 import React from 'react'
 
-function MentorCard() {
+function MentorCard({ mentor }) {
     return (
-        <div>MentorCard</div>
+        <div>
+            <div>
+                <h4>
+                    {mentor?.profile?.title}
+                </h4>
+            </div>
+        </div>
     )
 }
 

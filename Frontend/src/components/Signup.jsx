@@ -36,7 +36,7 @@ const Signup = () => {
 
     return (
         <div className="bg-green-100 min-h-screen flex items-center justify-center">
-            <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md mt-20">
+            <div className="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md mt-4">
                 <h2 className="text-3xl font-bold text-center text-green-600 mb-6">
                     {heading}
                 </h2>

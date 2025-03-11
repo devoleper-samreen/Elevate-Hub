@@ -48,9 +48,9 @@ function TopMentors() {
         <div>
             <h1 className='text-3xl font-bold text-green-700 mb-10'>Top Mentors</h1>
             <div>
-                {topMentors.map((mentor) => (
-                    <li>{mentor.name}</li>
-                ))}
+                {topMentors.map((mentor) => {
+                    return <MentorCard mentor={mentor} key={mentor?._id} />
+                })}
             </div>
             <div>
                 <li>Aarav</li>

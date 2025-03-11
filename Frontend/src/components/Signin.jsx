@@ -1,41 +1,41 @@
 import React, { useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import auth from "../apiManager/auth"
 import toast from "react-hot-toast";
+import useUserStore from "../store/user"
+import { setToken } from "../helper/index"
 
 const Signin = () => {
-    // const { role } = useParams();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
-    // const heading = role === 'mentor' ? 'Sign Up as Mentor' : 'Sign Up as Student';
+    const { setUser } = useUserStore()
 
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
     const onSubmit = async (data) => {
         setIsLoading(true)
 
-        const formData = {
-            ...data
-        }
-
         try {
-            const res = await auth.signin(formData)
+            const res = await auth.signin(data)
             console.log(res);
             reset()
+            setUser(res.data.user)
+            setToken(res.data.token)
             toast.success(res?.data.message || "Login successfully!")
             navigate("/")
 
         } catch (error) {
             setIsLoading(false)
             console.log(error);
+            toast.error("Login failed : Please check your credentials")
 
         }
     }
 
     return (
         <div className="bg-green-100 min-h-screen flex items-center justify-center">
-            <div className="bg-white p-10 rounded-2xl shadow-lg w-full max-w-md mt-20">
+            <div className="bg-white p-10 rounded-2xl shadow-lg w-full max-w-md mt-4">
                 <h2 className="text-4xl font-bold text-center mb-2">
                     Welcome Back
                 </h2>
