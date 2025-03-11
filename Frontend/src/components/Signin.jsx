@@ -18,7 +18,7 @@ const Signin = () => {
 
         try {
             const res = await auth.signin(data)
-            console.log(res);
+            console.log("Login response : ", res);
             reset()
             setUser(res.data.user)
             setToken(res.data.token)

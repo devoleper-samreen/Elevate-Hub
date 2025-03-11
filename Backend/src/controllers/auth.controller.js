@@ -50,6 +50,7 @@ export const signin = async (req, res) => {
     const user = await loginUser(email, password)
 
     const token = await generateAuthTokens(user)
+
     user.password = undefined
 
     return res.status(httpStatus.ok).json({

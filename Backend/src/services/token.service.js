@@ -1,17 +1,19 @@
 import jwt from "jsonwebtoken"
 import moment from "moment"
 
-const generateToken = () => {
+const generateToken = (userId, expires, secret) => {
     const payload = {
         _id: userId,
         iat: moment().unix(),
         exp: expires.unix()
     }
 
-    jwt.sign(payload, secret)
+    return jwt.sign(payload, secret)
 }
 
 export const generateAuthTokens = async (user) => {
+    console.log("hello fron auth token generation...");
+
     const accessTokenExpires = moment().add(
         process.env.JWT_ACCESS_TOKEN_EXPIRATION_MINUTES,
         "minutes"

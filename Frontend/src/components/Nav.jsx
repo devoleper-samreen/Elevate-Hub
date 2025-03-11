@@ -7,8 +7,7 @@ import { removeToken } from "../helper/index"
 
 function Nav() {
     const navigate = useNavigate()
-    const user = 'sam'
-    // const { user, setUser } = useUserStore()
+    const { user, setUser } = useUserStore()
     const signupStudentBtnClick = () => navigate("/signup/student")
     const signupMentorBtnClick = () => navigate("/signup/mentor")
     const signinBtnClick = () => navigate("/signin")

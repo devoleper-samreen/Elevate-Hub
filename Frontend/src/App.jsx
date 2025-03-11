@@ -1,9 +1,10 @@
 import './App.css'
 import Nav from "./components/Nav"
 import { Toaster } from "react-hot-toast"
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import routes from "./routes/index"
 import { useLocation } from 'react-router-dom'
+import ProtectedRoute from "./components/ProtectedRoute"
 
 function App() {
   const location = useLocation();
