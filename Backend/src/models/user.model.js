@@ -30,8 +30,50 @@ const userSchema = new mongoose.Schema(
             enum: ["mentor", "student"],
             default: null
         },
+        profile: {
+            tags: {
+                type: [mongoose.Schema.Types.String],
+                default: []
+            },
+            title: {
+                type: mongoose.Schema.Types.String,
+                default: ''
+            },
+            bio: {
+                type: mongoose.Schema.Types.String,
+                default: ''
+            },
+            college: {
+                type: mongoose.Schema.Types.String,
+                default: ''
+            },
+            social: {
+                linkdin: {
+                    type: mongoose.Schema.Types.String,
+                    default: ''
+                },
+                github: {
+                    type: mongoose.Schema.Types.String,
+                    default: ''
+                },
+                twitter: {
+                    type: mongoose.Schema.Types.String,
+                    default: ''
+                },
+                facebook: {
+                    type: mongoose.Schema.Types.String,
+                    default: ''
+                },
+                instagram: {
+                    type: mongoose.Schema.Types.String,
+                    default: ''
+                },
+            }
+        }
 
-    }
+    }, {
+    timestamps: true
+}
 )
 
 userSchema.pre("save", async function (next) {
