@@ -14,12 +14,23 @@ function App() {
     <div className='mx-auto, max-w-screen-3xl'>
       <Toaster position='top-center' />
       {!hideNavbar && <Nav />}
-      <Routes>
+      {/* <Routes>
         {
           routes.map((route) => (
             <Route key={route.path} path={route.path} element={<RouteElement route={route} />} />
           ))
         }
+      </Routes> */}
+
+      <Routes>
+        {routes.map((route) => (
+          <Route key={route.path} path={route.path} element={<RouteElement route={route} />}>
+            {route.children &&
+              route.children.map((child) => (
+                <Route key={child.path} path={child.path} element={child.element} />
+              ))}
+          </Route>
+        ))}
       </Routes>
     </div>
 

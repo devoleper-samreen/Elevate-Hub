@@ -2,6 +2,7 @@ import Home from "../pages/Home"
 import Signup from "../components/Signup"
 import Signin from "../components/Signin"
 import Profile from "../pages/dashboard/Profile"
+import Dashboard from "../pages/dashboard/Dashboard"
 
 const routes = [
     {
@@ -20,9 +21,15 @@ const routes = [
         isProtected: false
     },
     {
-        path: "/dashboard/profile",
-        element: <Profile />,
-        isProtected: true
+        path: "/dashboard",
+        element: <Dashboard />,
+        isProtected: true,
+        children: [
+            {
+                path: "profile",
+                element: <Profile />
+            }
+        ]
     }
 ]
 
