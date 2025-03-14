@@ -1,19 +1,27 @@
 import React, { useState } from 'react'
 import useUserStore from "../../store/user"
-import Link from "react-router-dom"
 import { Modal, Avatar, Input, Spin, Form, Button } from "antd"
 
 function Profile() {
     const { user: mentorData, setUser } = useUserStore()
     const [isEditing, setIsEditing] = useState(false)
-    const generateAvatarUrl = (name) => {
-        const initials = name.split(" ".map((word) => word.charAt(0).toUpperCase()).join(""))
 
-        return `https:ui-avatars.com/api/?name${initials}`
-    }
+    const generateAvatarUrl = (name) => {
+        const initials = name
+            ?.split(" ")
+            .map((word) => word.charAt(0).toUpperCase())
+            .join("");
+        return `https://ui-avatars.com/api/?name=${initials}`;
+    };
+
 
     const handleEditProfile = () => {
         setIsEditing(true)
+
+    }
+
+    const handleSubmit = (values) => {
+        console.log(values);
 
     }
 
@@ -43,17 +51,17 @@ function Profile() {
             </div>
 
             <div>
-                <Link to={mentorData?.social?.linkdin}>svg</Link>
+                <a href={mentorData?.social?.linkedin} target='_blank'>svg</a>
             </div>
             <button onClick={handleEditProfile}>Edit Profile</button>
 
             <Modal open={isEditing} onCancel={() => setIsEditing(false)}>
                 <Form initialValues={{ name: mentorData?.name }} onFinish={handleSubmit}>
-                    <Form.Item rules={[{ required: true, message: "please enter your name" }]}>
+                    <Form.Item name={`name`} rules={[{ required: true, message: "please enter your name" }]}>
                         <input type="text" />
 
                     </Form.Item>
-                    <Form.Item>
+                    <Form.Item htmlType='submit'>
                         <Button>Save changes</Button>
                     </Form.Item>
 
