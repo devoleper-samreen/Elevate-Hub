@@ -4,12 +4,14 @@ import useUserStore from "../store/user";
 
 const Sidebar = () => {
     const { user } = useUserStore();
+    console.log("user from sidebar", user);
+
     return (
         <aside className="flex flex-col w-64 h-screen px-4 py-8 overflow-y-auto bg-gradient-to-r from-indigo-50 to-white border-r">
             <div className="flex flex-col items-center mt-6 -mx-2">
                 <img
                     className="object-cover w-24 h-24 mx-2 rounded-full shadow-lg"
-                    src={user?.photoUrl || `https://ui-avatars.com/api?name=${user?.name}`}
+                    src={user?.profile?.profilePicture || `https://ui-avatars.com/api?name=${user?.name}`}
                     alt={`${user?.name}'s avatar`}
                 />
                 <h4 className="mx-2 mt-2 font-medium text-gray-800">{user?.name}</h4>

@@ -34,7 +34,6 @@ const userSchema = new mongoose.Schema(
             profilePicture: {
                 type: mongoose.Schema.Types.String,
                 default: ''
-
             },
             tags: {
                 type: [mongoose.Schema.Types.String],

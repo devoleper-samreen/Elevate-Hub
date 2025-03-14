@@ -1,5 +1,6 @@
 import { User } from "../models/user.model.js"
 import { httpStatus } from "../utils/httpStatus.js"
+import { uploadOnCloudinary } from "../helpers/cloudinary.js"
 
 export const updateProfile = async (req, res) => {
     try {
@@ -33,14 +34,40 @@ export const updateProfile = async (req, res) => {
 }
 
 export const updateImage = async (req, res) => {
-    const userId = req.user._id
-
     console.log("hello...");
+    const userId = req.user._id
+    const profileLocalPath = req.files?.profilePicture[0]?.path
+
+    if (!profileLocalPath) {
+        return res.status(httpStatus.badRequest).json({
+            message: "Profile picture localfile not get"
+        })
+    }
+
+    const profilePicture = await uploadOnCloudinary(profileLocalPath)
+    console.log(profilePicture);
+
+
+    const updatedProfile = await User.findByIdAndUpdate(userId,
+        {
+            profile: {
+                profilePicture: profilePicture?.secure_url
+            }
+        },
+        {
+            new: true
+        }
+
+    )
+
+    const user = await User.findById(userId)
+    console.log("user : ", user);
+
 
     return res.status(httpStatus.ok).json({
-        message: "Profile Picture Updated Successfully!"
+        message: "Profile Picture Updated Successfully!",
+        updatedProfile,
+        user
     })
-
-
 
 }

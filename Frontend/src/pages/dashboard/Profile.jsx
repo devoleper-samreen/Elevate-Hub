@@ -18,6 +18,8 @@ function Profile() {
     const { user: mentorData, setUser } = useUserStore()
     const [isEditing, setIsEditing] = useState(false)
     const [loading, setLoading] = useState(false)
+    //console.log(mentorData.profile.profilePicture);
+
 
     const generateAvatarUrl = (name) => {
         const initials = name
@@ -33,12 +35,12 @@ function Profile() {
     }
 
     const handleSubmit = async (values) => {
-        console.log(values);
 
         const updatedData = {
             username: values.username,
             name: values.name,
             profile: {
+                profilePicture: mentorData?.profile?.profilePicture,
                 tags: values.title?.split(",").map((tag) => tag.trim()),
                 skills: values.skills.split(",").map((skill) => skill.trim()),
                 bio: values.bio,
@@ -52,15 +54,12 @@ function Profile() {
             },
         }
 
-        console.log("updated data", updatedData);
-
-
         try {
             setLoading(true)
-            console.log(updatedData);
+
 
             const response = await updateProfile(updatedData)
-            console.log("response", response);
+
             setUser(response?.data?.updatedUser)
             toast.success("Profile updated successfully!")
 
@@ -83,7 +82,16 @@ function Profile() {
 
             try {
                 const response = await uploadImage(formData);
-                setUser({ ...mentorData, photoUrl: response.data.photoUrl });
+
+                setUser({
+                    ...mentorData,
+                    profile: {
+                        ...mentorData.profile,
+                        profilePicture: response.data.updatedProfile.profile.profilePicture
+                    },
+
+                });
+
             } catch (error) {
                 console.error("Image upload failed", error);
             } finally {
@@ -91,6 +99,8 @@ function Profile() {
             }
         }
     };
+
+
 
     return (
         <div className="flex flex-col items-center w-full h-screen pb-10 px-10 bg-gradient-to-r from-green-50 to-white">
@@ -107,7 +117,7 @@ function Profile() {
                                 }
                             }}
                             size={180}
-                            src={mentorData?.photoUrl || generateAvatarUrl(mentorData?.name || "User")}
+                            src={mentorData?.profile?.profilePicture || generateAvatarUrl(mentorData?.name || "User")}
                             className="border-4 border-green-300 shadow-lg cursor-pointer transform hover:scale-110 transition-all"
                         />
                     </div>
