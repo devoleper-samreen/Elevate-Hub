@@ -10,6 +10,8 @@ import {
     AiFillFacebook,
     AiFillInstagram,
 } from "react-icons/ai";
+import { updateProfile } from "../../apiManager/profile"
+import toast from 'react-hot-toast';
 
 function Profile() {
     const inputRef = useRef(null);
@@ -30,23 +32,37 @@ function Profile() {
         setIsEditing(true)
     }
 
-    const handleSubmit = (values) => {
+    const handleSubmit = async (values) => {
         console.log(values);
 
         const updatedData = {
             username: values.username,
             name: values.name,
-            title: values.title?.split(",").map((tag) => tag.trim()),
-            skills: values.skills.split(",").map((skill) => skill.trim()),
-            bio: values.bio,
-            college: values.college
-
+            profile: {
+                tags: values.title?.split(",").map((tag) => tag.trim()),
+                skills: values.skills.split(",").map((skill) => skill.trim()),
+                bio: values.bio,
+                college: values.college,
+                social: {
+                    linkedin: values.linkedin,
+                    github: values.github,
+                    twitter: values.twitter,
+                    facebook: values.facebook,
+                }
+            },
         }
+
+        console.log("updated data", updatedData);
+
 
         try {
             setLoading(true)
             console.log(updatedData);
 
+            const response = await updateProfile(updatedData)
+            console.log("response", response);
+            setUser(response?.data?.user)
+            toast.success("Profile updated successfully!")
 
         } catch (error) {
             console.error("Profile update failed", error);
@@ -88,11 +104,11 @@ function Profile() {
                     </p>
                     <p className="flex items-center justify-center mt-2 text-lg text-gray-700">
                         <AiOutlineUser className="mr-2 text-green-500" />
-                        {mentorData?.profile?.title}
+                        <span className="mt-2 text-lg text-gray-700">
+                            Tags: {mentorData?.profile?.tags?.join(", ")}
+                        </span>
                     </p>
-                    <p className="mt-2 text-lg text-gray-700">
-                        Tags: {mentorData?.profile?.tags?.join(", ")}
-                    </p>
+
                     <p className="mt-4 text-lg text-gray-700">
                         Bio: {mentorData?.profile?.bio}
                     </p>
@@ -101,6 +117,11 @@ function Profile() {
                             College: {mentorData?.profile?.college}
                         </p>
                     )}
+                    <p className="flex items-center justify-center mt-2 text-lg text-gray-700">
+                        <span className="mt-2 text-lg text-gray-700">
+                            Skills: {mentorData?.profile?.skills?.join(", ")}
+                        </span>
+                    </p>
                 </div>
 
                 <input
@@ -115,22 +136,23 @@ function Profile() {
                     Connect with Me
                 </h3>
                 <div className="flex justify-center mt-4 space-x-6">
-                    <a href={mentorData?.social?.linkedin || "#"} target="_blank" rel="noopener noreferrer" className="text-green-600 hover:text-green-800 transition-transform transform hover:scale-110">
+                    <a href={mentorData?.profile?.social?.linkedin} target="_blank" className="text-green-600 hover:text-green-800 transition-transform transform hover:scale-110">
                         <AiFillLinkedin className="text-4xl" />
                     </a>
-                    <a href={mentorData?.social?.github || "#"} target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-900 transition-transform transform hover:scale-110">
+                    <a href={mentorData?.profile?.social?.github || "#"} target="_blank" rel="noopener noreferrer" className="text-gray-800 hover:text-gray-900 transition-transform transform hover:scale-110">
                         <AiFillGithub className="text-4xl" />
                     </a>
-                    <a href={mentorData?.social?.twitter || "#"} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-500 transition-transform transform hover:scale-110">
+                    <a href={mentorData?.profile?.social?.twitter || "#"} target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-blue-500 transition-transform transform hover:scale-110">
                         <AiFillTwitterCircle className="text-4xl" />
                     </a>
-                    <a href={mentorData?.social?.facebook || "#"} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-900 transition-transform transform hover:scale-110">
+                    <a href={mentorData?.profile?.social?.facebook || "#"} target="_blank" rel="noopener noreferrer" className="text-blue-700 hover:text-blue-900 transition-transform transform hover:scale-110">
                         <AiFillFacebook className="text-4xl" />
                     </a>
-                    <a href={mentorData?.social?.instagram || "#"} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 transition-transform transform hover:scale-110">
+                    <a href={mentorData?.profile?.social?.instagram || "#"} target="_blank" rel="noopener noreferrer" className="text-pink-600 hover:text-pink-800 transition-transform transform hover:scale-110">
                         <AiFillInstagram className="text-4xl" />
                     </a>
                 </div>
+
 
                 <Button
                     type="primary"
@@ -152,11 +174,14 @@ function Profile() {
                         username: mentorData?.username,
                         name: mentorData?.name,
                         email: mentorData?.email,
-                        title: mentorData?.profile?.title,
-                        skills: mentorData?.profile?.tags?.join(", "),
+                        title: mentorData?.profile?.tags?.join(","),
+                        skills: mentorData?.profile?.skills?.join(","),
                         bio: mentorData?.profile?.bio,
                         college: mentorData?.profile?.college,
-                        social: mentorData?.social,
+                        linkedin: mentorData?.profile?.social?.linkedin,
+                        github: mentorData?.profile?.social?.github,
+                        twitter: mentorData?.profile?.social?.twitter,
+                        facebook: mentorData?.profile?.social?.facebook,
                     }}
                         onFinish={handleSubmit}
                         layout="vertical"
@@ -202,19 +227,19 @@ function Profile() {
                         </Form.Item>
 
                         {/* Social Links */}
-                        <Form.Item label="LinkedIn" name={["social", "linkedin"]}>
+                        <Form.Item label="LinkedIn" name="linkedin">
                             <Input placeholder="Enter LinkedIn profile URL" />
                         </Form.Item>
-                        <Form.Item label="GitHub" name={["social", "github"]}>
+                        <Form.Item label="GitHub" name="github">
                             <Input placeholder="Enter GitHub profile URL" />
                         </Form.Item>
-                        <Form.Item label="Twitter" name={["social", "twitter"]}>
+                        <Form.Item label="Twitter" name="twitter">
                             <Input placeholder="Enter Twitter profile URL" />
                         </Form.Item>
-                        <Form.Item label="Facebook" name={["social", "facebook"]}>
+                        <Form.Item label="Facebook" name="facebook">
                             <Input placeholder="Enter Facebook profile URL" />
                         </Form.Item>
-                        <Form.Item label="Instagram" name={["social", "instagram"]}>
+                        <Form.Item label="Instagram" name="instagram">
                             <Input placeholder="Enter Instagram profile URL" />
                         </Form.Item>
 

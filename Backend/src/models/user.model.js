@@ -35,10 +35,14 @@ const userSchema = new mongoose.Schema(
                 type: [mongoose.Schema.Types.String],
                 default: []
             },
-            title: {
-                type: mongoose.Schema.Types.String,
-                default: ''
+            skills: {
+                type: [mongoose.Schema.Types.String],
+                default: []
             },
+            // title: {
+            //     type: mongoose.Schema.Types.String,
+            //     default: ''
+            // },
             bio: {
                 type: mongoose.Schema.Types.String,
                 default: ''
@@ -48,7 +52,7 @@ const userSchema = new mongoose.Schema(
                 default: ''
             },
             social: {
-                linkdin: {
+                linkedin: {
                     type: mongoose.Schema.Types.String,
                     default: ''
                 },

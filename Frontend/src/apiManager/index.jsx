@@ -20,6 +20,7 @@ let AxiosInstances;
 
 AxiosInstances.interceptors.request.use((config) => {
     const token = getToken()
+    console.log("Token from getToken():", token);
     token && (config.headers.Authorization = `Bearer ${token}`)
     return config
 })
