@@ -61,7 +61,7 @@ function Profile() {
 
             const response = await updateProfile(updatedData)
             console.log("response", response);
-            setUser(response?.data?.user)
+            setUser(response?.data?.updatedUser)
             toast.success("Profile updated successfully!")
 
         } catch (error) {
@@ -69,12 +69,13 @@ function Profile() {
 
         } finally {
             setLoading(false)
+            setIsEditing(false);
         }
 
     }
 
     return (
-        <div className="flex flex-col items-center w-full min-h-screen pb-10 px-10 bg-gradient-to-r from-green-50 to-white">
+        <div className="scrollable-content flex flex-col items-center w-full h-screen overflow-auto pb-10 px-10 bg-gradient-to-r from-green-50 to-white">
             <div className="flex flex-col w-full max-w-5xl space-y-10 bg-white shadow-xl rounded-b-3xl">
                 <h2 className="mb-10 text-5xl font-bold text-center text-green-600">
                     My Profile

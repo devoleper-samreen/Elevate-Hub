@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Scrollbar ko hide karne ke liye */
+.scrollable-content::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari */
+}
+
+.scrollable-content {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}

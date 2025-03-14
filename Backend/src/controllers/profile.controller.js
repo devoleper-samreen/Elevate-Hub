@@ -3,14 +3,9 @@ import { httpStatus } from "../utils/httpStatus.js"
 
 export const updateProfile = async (req, res) => {
     try {
-        console.log("hello: ", req.user);
-
         //userId se find karke data update kar dege
         const userId = req.user._id
         const data = req.body
-
-        console.log("data : ", userId, data);
-
 
         const updatedUser = await User.findByIdAndUpdate(userId, data, { new: true })
 
@@ -19,6 +14,9 @@ export const updateProfile = async (req, res) => {
                 message: "User not found"
             })
         }
+
+        console.log("Updated user: ", updatedUser);
+
 
         return res.status(httpStatus.ok).json({
             message: "Profile updated successfully!",
