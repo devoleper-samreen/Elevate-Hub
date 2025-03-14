@@ -10,7 +10,7 @@ import {
     AiFillFacebook,
     AiFillInstagram,
 } from "react-icons/ai";
-import { updateProfile } from "../../apiManager/profile"
+import { updateProfile, uploadImage } from "../../apiManager/profile"
 import toast from 'react-hot-toast';
 
 function Profile() {
@@ -74,8 +74,26 @@ function Profile() {
 
     }
 
+    const handleImageChange = async (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            setLoading(true);
+            const formData = new FormData();
+            formData.append("profilePicture", file);
+
+            try {
+                const response = await uploadImage(formData);
+                setUser({ ...mentorData, photoUrl: response.data.photoUrl });
+            } catch (error) {
+                console.error("Image upload failed", error);
+            } finally {
+                setLoading(false);
+            }
+        }
+    };
+
     return (
-        <div className="scrollable-content flex flex-col items-center w-full h-screen overflow-auto pb-10 px-10 bg-gradient-to-r from-green-50 to-white">
+        <div className="flex flex-col items-center w-full h-screen pb-10 px-10 bg-gradient-to-r from-green-50 to-white">
             <div className="flex flex-col w-full max-w-5xl space-y-10 bg-white shadow-xl rounded-b-3xl">
                 <h2 className="mb-10 text-5xl font-bold text-center text-green-600">
                     My Profile
@@ -131,6 +149,7 @@ function Profile() {
                     accept="image/*"
                     className="hidden"
                     disabled={loading}
+                    onChange={handleImageChange}
                 />
 
                 <h3 className="text-2xl font-semibold text-center text-green-700">

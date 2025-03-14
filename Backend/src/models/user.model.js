@@ -31,6 +31,11 @@ const userSchema = new mongoose.Schema(
             default: null
         },
         profile: {
+            profilePicture: {
+                type: mongoose.Schema.Types.String,
+                default: ''
+
+            },
             tags: {
                 type: [mongoose.Schema.Types.String],
                 default: []

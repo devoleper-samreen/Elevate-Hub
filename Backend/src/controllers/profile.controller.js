@@ -31,3 +31,16 @@ export const updateProfile = async (req, res) => {
 
     }
 }
+
+export const updateImage = async (req, res) => {
+    const userId = req.user._id
+
+    console.log("hello...");
+
+    return res.status(httpStatus.ok).json({
+        message: "Profile Picture Updated Successfully!"
+    })
+
+
+
+}
