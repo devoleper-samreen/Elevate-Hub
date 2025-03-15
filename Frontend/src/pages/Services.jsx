@@ -1,8 +1,12 @@
 import React from 'react'
 import { useState } from 'react';
 import { Modal, Button, Form, Input } from 'antd';
+import { createService } from "../apiManager/service"
+import toast from 'react-hot-toast';
+import useServiceStore from "../store/service"
 
 function Services() {
+    const { services, setServices } = useServiceStore()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [form] = Form.useForm();
 
@@ -13,6 +17,11 @@ function Services() {
         try {
             const values = await form.validateFields();
             console.log('Service Data:', values);
+            const response = await createService(values)
+            console.log('Response: ', response);
+            setServices(response?.data?.service)
+            toast.success("Service created successfully!")
+
             form.resetFields();
             setIsModalOpen(false);
         } catch (error) {
