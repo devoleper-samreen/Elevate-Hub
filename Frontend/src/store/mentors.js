@@ -3,7 +3,7 @@ import { devtools } from "zustand/middleware"
 
 const useMentorStore = create()(
     devtools((set) => ({
-        mentorsState: [],
+        mentorsData: [],
         setMentorsData: (mentors) => set(() => (
             {
                 mentorsData: mentors
