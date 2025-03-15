@@ -7,6 +7,7 @@ import mentorApi from "../apiManager/mentor";
 const MentorPage = () => {
 
     const { mentorsData, setMentorsData } = useMentorStore()
+    const [searchValue, setSearchValue] = useState("")
 
 
     const fetchAllMentors = async () => {
@@ -25,6 +26,10 @@ const MentorPage = () => {
         fetchAllMentors()
     }, []);
 
+    const filteredMentors = mentorsData?.filter((mentor) => {
+        return mentor?.name?.toLowerCase().includes(searchValue?.toLowerCase())
+    })
+
     return (
         <div className="max-w-[1050px] mx-auto py-6">
             {/* Page Heading */}
@@ -38,13 +43,21 @@ const MentorPage = () => {
                     type="text"
                     placeholder="Search mentor..."
                     className="w-full max-w-lg px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500"
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
                 />
             </div>
 
             {/* Mentor Cards Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
-                {mentorsData?.map((mentor) => {
+                {
+                    filteredMentors.length > 0 ? (
+                        filteredMentors.map((mentor) => <MentorCard mentor={mentor} key={mentor?._id} />)
+                    ) : (<p className="col-span-full text-center text-gray-500">No mentors found 😞</p>)
+                }
+
+                {!filteredMentors && mentorsData?.map((mentor) => {
                     return <MentorCard mentor={mentor} key={mentor?._id} />
                 })}
             </div>

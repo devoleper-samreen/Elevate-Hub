@@ -133,7 +133,7 @@ function Home() {
             </section>
 
             {/*top mentor*/}
-            <section className="text-gray-700 bg-gray-200 py-4 my-10">
+            <section className="text-gray-300 bg-gray-200 py-4 my-10">
                 <TopMentors />
             </section>
 
