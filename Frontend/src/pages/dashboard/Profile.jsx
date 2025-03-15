@@ -18,7 +18,6 @@ function Profile() {
     const { user: mentorData, setUser } = useUserStore()
     const [isEditing, setIsEditing] = useState(false)
     const [loading, setLoading] = useState(false)
-    //console.log(mentorData.profile.profilePicture);
 
 
     const generateAvatarUrl = (name) => {

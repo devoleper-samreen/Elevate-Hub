@@ -3,6 +3,8 @@ import Signup from "../components/Signup"
 import Signin from "../components/Signin"
 import Profile from "../pages/dashboard/Profile"
 import Dashboard from "../pages/dashboard/Dashboard"
+import MentorPage from "../pages/MentorsPage"
+import BookSessionPage from "../pages/BookSessionPage"
 
 const routes = [
     {
@@ -18,6 +20,16 @@ const routes = [
     {
         path: "/signup/:role",
         element: <Signup />,
+        isProtected: false
+    },
+    {
+        path: "/mentors",
+        element: <MentorPage />,
+        isProtected: false
+    },
+    {
+        path: "/mentors/:mentorId",
+        element: <BookSessionPage />,
         isProtected: false
     },
     {

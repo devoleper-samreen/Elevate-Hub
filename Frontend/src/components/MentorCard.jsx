@@ -1,11 +1,14 @@
 import React from "react";
 import { Card, Avatar, Tag } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 const MentorCard = ({ mentor }) => {
+    const navigate = useNavigate()
 
     return (
         <Card
+            onClick={() => navigate(`/mentors/${mentor.username}`)}
             hoverable
             className="w-80 h-80 flex flex-col items-center justify-center shadow-md rounded-full transition transform hover:scale-105"
         >

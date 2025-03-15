@@ -3,8 +3,10 @@ import useMentorStore from "../store/mentors"
 import MentorCard from './MentorCard'
 import { Button, Spin } from "antd"
 import mentorApi from '../apiManager/mentor'
+import { useNavigate } from "react-router-dom"
 
 function TopMentors() {
+    const navigate = useNavigate()
     const [topMentors, setTopMentors] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const { setMentorsData } = useMentorStore()
@@ -48,8 +50,13 @@ function TopMentors() {
                 {topMentors.map((mentor) => {
                     return <MentorCard mentor={mentor} key={mentor?._id} />
                 })}
-
             </div>
+            <button
+                className='bg-green-300 text-lg py-2 px-5 rounded-lg outline-none border-none font-bold text-green-700 transition transform hover:scale-105 mt-16'
+                onClick={() => navigate("/mentors")}
+            >
+                View All
+            </button>
         </div>
     )
 }
