@@ -5,7 +5,7 @@ const getAllMentors = () => {
 }
 
 const getMentorsByUsername = (username) => {
-    return AxiosInstances.get('/mentor', username)
+    return AxiosInstances.get(`/mentor/${username}`)
 }
 
 const mentorApi = {

@@ -1,18 +1,35 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import {
-    AiOutlineUser,
-    AiOutlineMail,
     AiFillLinkedin,
     AiFillGithub,
     AiFillTwitterCircle,
     AiFillFacebook,
     AiFillInstagram,
 } from "react-icons/ai";
+import mentorApi from '../apiManager/mentor';
 
 function BookSessionPage() {
-    const { mentorId } = useParams()
-    const mentor = '123'
+    const { username } = useParams()
+    const [mentor, setMentor] = useState()
+
+    const fetchMentorByUsername = async () => {
+        try {
+            const response = await mentorApi.getMentorsByUsername(username)
+            console.log(response);
+
+            setMentor(response?.data.mentor)
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        fetchMentorByUsername()
+        console.log("mentor name", mentor?.name);
+
+    }, [])
 
     return (
         <div className='flex'>
@@ -25,10 +42,17 @@ function BookSessionPage() {
                         alt={`${mentor?.name}'s avatar`}
                     />
                     <h4 className="mx-2 mt-2 font-medium text-2xl text-gray-800">{mentor?.name || "Aryan Khan"}</h4>
-                    <p className="mx-2 text-sm font-medium text-gray-600 my-8">
-                        {mentor?.email || "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, in assumenda aut consequatur nihil temporibus nesciunt neque impedit accusantium quae!"}
-
+                    <p className="mx-2 text-sm font-medium text-gray-600 my-6">
+                        {mentor?.profile?.bio}
                     </p>
+                    <div className="mx-2 text-sm font-medium text-gray-600 flex mb-6">
+                        {
+                            mentor?.profile.tags.map((tag, i) => (
+                                <p key={i} className='text-yellow-600 border px-4 py-2 border-orange-300 rounded'>{tag}</p>
+                            ))
+                        }
+
+                    </div>
 
                     <h3 className="text-xl font-semibold text-center text-black">
                         Connect with Me

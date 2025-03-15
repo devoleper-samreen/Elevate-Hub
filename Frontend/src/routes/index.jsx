@@ -28,7 +28,7 @@ const routes = [
         isProtected: false
     },
     {
-        path: "/mentors/:mentorId",
+        path: "/mentors/:username",
         element: <BookSessionPage />,
         isProtected: false
     },
