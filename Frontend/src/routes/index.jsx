@@ -5,6 +5,7 @@ import Profile from "../pages/dashboard/Profile"
 import Dashboard from "../pages/dashboard/Dashboard"
 import MentorPage from "../pages/MentorsPage"
 import BookSessionPage from "../pages/BookSessionPage"
+import Services from "../pages/Services"
 
 const routes = [
     {
@@ -40,6 +41,10 @@ const routes = [
             {
                 path: "profile",
                 element: <Profile />
+            },
+            {
+                path: "services",
+                element: <Services />
             }
         ]
     }
