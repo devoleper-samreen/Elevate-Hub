@@ -19,8 +19,9 @@ function Services() {
         try {
             const values = await form.validateFields();
             const response = await createService(values)
-            services.push(response?.data?.services)
-            setServices(services)
+            console.log("response", response);
+
+            setServices([...services, response?.data?.service]);
             toast.success("Service created successfully!")
 
             form.resetFields();

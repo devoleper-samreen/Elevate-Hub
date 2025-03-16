@@ -7,7 +7,7 @@ import useServiceStore from "../store/service"
 const ServiceCard = ({ service }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [form] = Form.useForm();
-    const { editedService } = useServiceStore()
+    const { services, setServices } = useServiceStore()
 
 
     const handleOpenModal = () => {
@@ -26,7 +26,7 @@ const ServiceCard = ({ service }) => {
 
             const response = await editService(service?._id, values)
             console.log(response);
-            editedService(service?.id, values)
+            setServices(services.map(s => s._id === service._id ? { ...s, ...values } : s));// yaha pe state manage karni hain
 
             handleCloseModal();
         } catch (error) {
