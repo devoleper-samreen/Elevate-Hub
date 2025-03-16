@@ -1,10 +1,14 @@
 import { useState } from "react";
 import { Button, Modal, Form, Input } from "antd";
 import { EditOutlined } from "@ant-design/icons";
+import { editService } from "../apiManager/service"
+import useServiceStore from "../store/service"
 
 const ServiceCard = ({ service }) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [form] = Form.useForm();
+    const { editedService } = useServiceStore()
+
 
     const handleOpenModal = () => {
         setIsModalOpen(true);
@@ -19,6 +23,11 @@ const ServiceCard = ({ service }) => {
         try {
             const values = await form.validateFields();
             console.log("Updated Service Data:", values);
+
+            const response = await editService(service?._id, values)
+            console.log(response);
+            editedService(service?.id, values)
+
             handleCloseModal();
         } catch (error) {
             console.log("Validation Failed:", error);
@@ -76,10 +85,10 @@ const ServiceCard = ({ service }) => {
             >
                 <Form
                     initialValues={{
-                        serviceName: service.serviceName,
-                        description: service.description,
-                        duration: service.duration,
-                        price: service.price,
+                        serviceName: service?.serviceName,
+                        description: service?.description,
+                        duration: service?.duration,
+                        price: service?.price,
                     }}
                     form={form}
                     layout="vertical"

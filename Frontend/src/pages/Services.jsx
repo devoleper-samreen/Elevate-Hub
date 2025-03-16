@@ -18,9 +18,7 @@ function Services() {
     const handleCreateService = async () => {
         try {
             const values = await form.validateFields();
-            console.log('Service Data:', values);
             const response = await createService(values)
-            console.log('Response: ', response);
             services.push(response?.data?.services)
             setServices(services)
             toast.success("Service created successfully!")

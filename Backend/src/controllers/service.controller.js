@@ -58,3 +58,41 @@ export const getServiceByMentor = async (req, res) => {
     }
 
 }
+
+export const editService = async (req, res) => {
+    try {
+        const { id, serviceName, description, duration, price } = req.body
+        console.log(id);
+
+        const editedService = await Service.findByIdAndUpdate(
+            id,
+            {
+                serviceName,
+                description,
+                duration,
+                price
+            },
+            { new: true }
+        )
+
+        if (!editedService) {
+            return res.status(httpStatus.internalServerError).json({
+                message: "Error while service edited!",
+                editedService
+            })
+
+        }
+
+        return res.status(httpStatus.ok).json({
+            message: "service edited successfully!",
+            editedService
+        })
+    } catch (error) {
+        return res.status(httpStatus.internalServerError).json({
+            message: "Error while editing service",
+            error
+        })
+
+    }
+
+}

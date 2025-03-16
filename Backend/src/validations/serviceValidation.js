@@ -1,6 +1,7 @@
 import joi from "joi"
 
 export const serviceValidation = joi.object().keys({
+    id: joi.string().required().trim(),
     serviceName: joi.string().required().trim(),
     description: joi.string().required().trim(),
     duration: joi.number().required(),

@@ -8,7 +8,13 @@ const useServiceStore = create()(
             {
                 services: services
             }
-        ))
+        )),
+        editedService: (id, updatedData) =>
+            set((state) => ({
+                services: state.services.map((service) =>
+                    service.id === id ? { ...service, ...updatedData } : service
+                ),
+            })),
     }))
 )
 

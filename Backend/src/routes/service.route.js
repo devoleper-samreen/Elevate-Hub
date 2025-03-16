@@ -1,5 +1,5 @@
 import express from "express"
-import { createService, getServiceByMentor } from "../controllers/service.controller.js"
+import { createService, getServiceByMentor, editService } from "../controllers/service.controller.js"
 import { verifyToken } from "../middleware/auth.js"
 import { serviceValidation } from "../validations/serviceValidation.js"
 import validate from "../middleware/validate.js"
@@ -10,6 +10,7 @@ router.use(verifyToken)
 
 router.post("/create", validate(serviceValidation), createService)
 router.get('/', getServiceByMentor)
+router.put('/', validate(serviceValidation), editService)
 
 
 export default router
