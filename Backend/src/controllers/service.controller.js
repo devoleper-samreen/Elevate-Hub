@@ -31,3 +31,30 @@ export const createService = async (req, res,) => {
     }
 
 }
+
+export const getServiceByMentor = async (req, res) => {
+    try {
+        const userId = req.user._id
+        const services = await Service.find({ mentor: userId })
+
+        if (!services) {
+            return res.status(httpStatus.notFound).json({
+                message: "Services not found"
+            })
+        }
+
+        return res.status(httpStatus.ok).json({
+            message: "Services found successfully!",
+            services
+        })
+    } catch (error) {
+        // throw new ApiError(httpStatus.internalServerError, "Internal server Error")
+
+        return res.status(httpStatus.internalServerError).json({
+            message: "error while fecthing services",
+            error
+        })
+
+    }
+
+}

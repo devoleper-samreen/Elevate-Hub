@@ -99,8 +99,6 @@ function Profile() {
         }
     };
 
-
-
     return (
         <div className="flex flex-col items-center w-full h-screen pb-10 px-10 bg-gradient-to-r from-green-50 to-white">
             <div className="flex flex-col w-full max-w-5xl space-y-10 bg-white shadow-xl rounded-b-3xl">

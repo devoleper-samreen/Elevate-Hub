@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { Modal, Button, Form, Input } from 'antd';
-import { createService } from "../apiManager/service"
+import { createService, getServiceByMentor } from "../apiManager/service"
 import toast from 'react-hot-toast';
 import useServiceStore from "../store/service"
+import ServiceCard from "../components/ServiceCard"
 
 function Services() {
+    const [loading, setLoading] = useState(false)
     const { services, setServices } = useServiceStore()
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [form] = Form.useForm();
@@ -19,7 +21,8 @@ function Services() {
             console.log('Service Data:', values);
             const response = await createService(values)
             console.log('Response: ', response);
-            setServices(response?.data?.service)
+            services.push(response?.data?.services)
+            setServices(services)
             toast.success("Service created successfully!")
 
             form.resetFields();
@@ -29,11 +32,41 @@ function Services() {
         }
     };
 
+    const fetchAllServices = async () => {
+        setLoading(true)
+        try {
+            const response = await getServiceByMentor()
+            console.log("get services: ", response);
+            setServices(response?.data?.services)
+
+        } catch (error) {
+            console.log(error);
+
+
+        } finally {
+            setLoading(false)
+        }
+
+    }
+
+    useEffect(() => {
+        fetchAllServices()
+    }, [])
+
     return (
         <div className='px-12 py-4 bg-gray-100 h-screen'>
             <div className='flex items-center justify-between'>
                 <h1 className='text-3xl font-semibold'>Your Services</h1>
                 <button className='bg-blue-500 px-10 py-2 rounded text-white text-sm' onClick={handleOpenModal}>Add New</button>
+            </div>
+
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8'>
+                {
+                    services?.map((service, i) => (
+                        <ServiceCard key={i} service={service} />
+                    ))
+                }
+
             </div>
 
             {/* Modal */}
