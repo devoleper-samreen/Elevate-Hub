@@ -8,10 +8,12 @@ import {
     AiFillInstagram,
 } from "react-icons/ai";
 import mentorApi from '../apiManager/mentor';
+import { getServiceByMentorUsername } from "../apiManager/service"
 
 function BookSessionPage() {
     const { username } = useParams()
     const [mentor, setMentor] = useState()
+    const [services, setServices] = useState()
 
     const fetchMentorByUsername = async () => {
         try {
@@ -25,9 +27,22 @@ function BookSessionPage() {
         }
     }
 
+    const fetchMentorSession = async () => {
+        try {
+            const response = await getServiceByMentorUsername(username)
+            console.log("services fetching: ", response);
+            setServices(response?.data?.services)
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
     useEffect(() => {
         fetchMentorByUsername()
         console.log("mentor name", mentor?.name);
+        fetchMentorSession()
 
     }, [])
 
@@ -76,7 +91,79 @@ function BookSessionPage() {
                     </div>
                 </div>
             </aside>
-            <main className='bg-gray-100 w-2/3 h-screen'></main>
+            <main className='bg-gray-100 w-2/3 h-screen'>
+                <h1 className='text-2xl font-bold text-left mt-4 px-6'>Book a Session</h1>
+                <div className='flex gap-6 px-6 py-8'>
+                    {
+                        services?.map((service) => {
+                            return <div className="p-4 w-[350px] bg-gray-100 shadow-2xl cursor-pointer group rounded-2xl transition-all duration-300 hover:scale-105">
+                                <div className="py-2 text-2xl font-bold lg:pb-6">
+                                    {service?.serviceName}
+
+                                </div>
+                                <div className="p-4 bg-gray-200 group-hover:bg-gray-300 rounded-2xl transition-all duration-300">
+                                    <div className="flex items-center justify-between">
+                                        {/* Left Section */}
+                                        <div className="flex items-center">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                strokeWidth={1.5}
+                                                stroke="currentColor"
+                                                className="w-8 h-8 text-blue-600"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                                                />
+                                            </svg>
+                                            <div className="flex flex-col ml-3">
+                                                <div className="text-lg font-bold text-gray-700">
+                                                    {service?.duration} mins
+                                                </div>
+                                                <div className="text-sm text-gray-500">Video Meeting</div>
+                                            </div>
+                                        </div>
+
+                                        {/* Price Section */}
+                                        <div className="flex items-center px-3 py-2 border border-gray-600 rounded-full group-hover:bg-black group-hover:text-white transition-all duration-300">
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                strokeWidth={1.5}
+                                                stroke="currentColor"
+                                                className="w-6 h-6"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    d="M15 8.25H9m6 3H9m3 6-3-3h1.5a3 3 0 1 0 0-6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                                />
+                                            </svg>
+                                            <span className="font-bold text-lg mx-2">
+                                                ₹{service?.price}
+                                            </span>
+                                            <svg
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                fill="none"
+                                                viewBox="0 0 24 24"
+                                                strokeWidth={1.5}
+                                                stroke="currentColor"
+                                                className="w-5 h-5"
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        })
+                    }
+                </div>
+            </main>
         </div>
     )
 }

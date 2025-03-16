@@ -1,6 +1,7 @@
 import { Service } from "../models/service.model.js"
 import { httpStatus } from "../utils/httpStatus.js"
 import { ApiError } from "../helpers/apiError.js"
+import { User } from "../models/user.model.js"
 
 export const createService = async (req, res,) => {
     try {
@@ -91,6 +92,37 @@ export const editService = async (req, res) => {
         return res.status(httpStatus.internalServerError).json({
             message: "Error while editing service",
             error
+        })
+
+    }
+
+}
+
+export const getAllServicesByMentorUsername = async (req, res) => {
+    try {
+        const { username } = req.params
+        const mentor = await User.findOne({ username })
+        if (!mentor) {
+            return res.status(httpStatus.notFound).json({
+                message: "Mentor not found",
+            })
+        }
+        const allServices = await Service.find({ mentor: mentor._id })
+
+        if (!allServices) {
+            return res.status(httpStatus.notFound).json({
+                message: "services not found",
+            })
+        }
+
+        return res.status(httpStatus.ok).json({
+            message: "Services fetched successfully!",
+            services: allServices
+        })
+
+    } catch (error) {
+        return res.status(httpStatus.internalServerError).json({
+            message: "Inter server by fecthing services"
         })
 
     }

@@ -20,3 +20,8 @@ export const editService = (id, serviceData) => {
     return AxiosInstances.put('/services', newData)
 
 }
+
+export const getServiceByMentorUsername = (username) => {
+    return AxiosInstances.get(`/services/${username}`)
+
+}
