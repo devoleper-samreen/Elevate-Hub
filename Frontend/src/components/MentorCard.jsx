@@ -22,7 +22,7 @@ const MentorCard = ({ mentor }) => {
             <h3 className="py-2 text-2xl font-bold text-gray-800">{mentor.name}</h3>
             <div className="flex items-center justify-center gap-x-2 mt-2 text-gray-600">
                 <HomeOutlined className="text-yellow-600" />
-                <span>{mentor.profile.college}</span>
+                <span>{mentor.profile.college || "College"}</span>
             </div>
             <div className="flex flex-wrap justify-center gap-2 mt-4">
                 {

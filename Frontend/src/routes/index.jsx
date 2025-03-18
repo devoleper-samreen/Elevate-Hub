@@ -6,11 +6,17 @@ import Dashboard from "../pages/dashboard/Dashboard"
 import MentorPage from "../pages/MentorsPage"
 import BookSessionPage from "../pages/BookSessionPage"
 import Services from "../pages/Services"
+import Payment from "../pages/Payment"
 
 const routes = [
     {
         path: "/",
         element: <Home />,
+        isProtected: false
+    },
+    {
+        path: "/checkout",
+        element: <Payment />,
         isProtected: false
     },
     {
