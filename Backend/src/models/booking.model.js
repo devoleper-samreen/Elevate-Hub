@@ -6,7 +6,7 @@ const bookingSchema = new mongoose.Schema({
         ref: "Service",
         required: true
     },
-    studentId: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true
@@ -17,8 +17,9 @@ const bookingSchema = new mongoose.Schema({
         default: "pending"
     },
     paymentId: {
-        type: String, //Razorpay se jo payment ID milegi
-        default: null
+        type: String, //cashfree se jo payment ID milegi
+        default: null,
+        required: true
     },
 
 }, { timestamps: true }

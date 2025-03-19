@@ -71,18 +71,23 @@ export const verifyPayment = async (req, res) => {
         const data = response?.data
         console.log("hamara data:", data);
         console.log("payment status", data[0].payment_status);
+        console.log("paymrntId:", data[0].cf_payment_id);
+
 
 
         if (data[0].payment_status == 'SUCCESS') {
             return res.status(httpStatus.ok).json({
                 success: true,
                 message: "Payment successful",
+                status: data[0].payment_status,
+                paymentId: data[0].cf_payment_id
             });
 
         } else {
             return res.status(httpStatus.badRequest).json({
                 success: false,
                 message: "Payment not successful",
+                status: 'FAILED'
 
             });
 

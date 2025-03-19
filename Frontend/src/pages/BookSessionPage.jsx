@@ -11,20 +11,18 @@ import mentorApi from '../apiManager/mentor';
 import { getServiceByMentorUsername } from "../apiManager/service"
 import { handlePayments } from "../helper/payment"
 import useUserStore from "../store/user"
+import { bookSession } from "../apiManager/booking"
+import toast from 'react-hot-toast';
 
 function BookSessionPage() {
     const { user } = useUserStore()
-    console.log("user state: ", user);
-
     const { username } = useParams()
-    const [mentor, setMentor] = useState()
-    const [services, setServices] = useState()
+    const [mentor, setMentor] = useState(null)
+    const [services, setServices] = useState([])
 
     const fetchMentorByUsername = async () => {
         try {
             const response = await mentorApi.getMentorsByUsername(username)
-            console.log(response);
-
             setMentor(response?.data.mentor)
 
         } catch (error) {
@@ -35,7 +33,6 @@ function BookSessionPage() {
     const fetchMentorSession = async () => {
         try {
             const response = await getServiceByMentorUsername(username)
-            console.log("services fetching: ", response);
             setServices(response?.data?.services)
 
         } catch (error) {
@@ -44,19 +41,43 @@ function BookSessionPage() {
 
     }
 
+    const handleBookSession = async (sessionId, paymentId, paymentStatus) => {
+        const sessionData = {
+            sessionId,
+            paymentId,
+            paymentStatus
+        }
+
+        try {
+            const response = await bookSession(sessionData)
+            console.log("response:", response);
+            toast.success("Session booked successfully!")
+        } catch (error) {
+            console.log(error);
+            toast.error("Failed to book session.")
+        }
+    }
+
     useEffect(() => {
         fetchMentorByUsername()
-        console.log("mentor name", mentor?.name);
         fetchMentorSession()
 
-    }, [])
+    }, [username])
 
-    const handlePayment = async (price) => {
-        console.log('hello...');
+    const handlePayment = async (price, sessionId) => {
         const amount = price || 100
         const name = user.name || "samreen"
         const email = user.email || "example123@gmail.com"
-        await handlePayments({ amount, name, email })
+
+        const paymentRes = await handlePayments({ amount, name, email })
+
+        console.log("paymentRes:", paymentRes);
+
+        if (paymentRes?.data?.status == "SUCCESS") {
+            await handleBookSession(sessionId, paymentRes?.data.paymentId, "completed");
+        } else {
+            toast.error("Payment Failed!")
+        }
 
     }
 
@@ -142,7 +163,7 @@ function BookSessionPage() {
                                         </div>
 
                                         {/* Price Section */}
-                                        <div className="flex items-center px-3 py-2 border border-gray-600 rounded-full group-hover:bg-black group-hover:text-white transition-all duration-300">
+                                        <div onClick={() => handlePayment(service?.price, service?._id)} className="flex items-center px-3 py-2 border border-gray-600 rounded-full group-hover:bg-black group-hover:text-white transition-all duration-300">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 fill="none"
@@ -158,7 +179,6 @@ function BookSessionPage() {
                                                 />
                                             </svg>
                                             <span className="font-bold text-lg mx-2"
-                                                onClick={() => handlePayment(service?.price || '500')}
                                             >
                                                 ₹{service?.price}
                                             </span>

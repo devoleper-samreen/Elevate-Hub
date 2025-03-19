@@ -1,5 +1,6 @@
 import { load } from "@cashfreepayments/cashfree-js";
 import AxiosInstances from "../apiManager";
+import toast from "react-hot-toast";
 
 const initializeSDK = async () => {
     try {
@@ -20,12 +21,18 @@ const verifyPayment = async (orderId) => {
     console.log("verify response :", verifyRes)
 
     if (verifyRes.data.success == true) {
-        console.log("Payment Verified:", verifyRes.data);
-        alert("Payment successful!");
+        // console.log("Payment Verified:", verifyRes.data);
+        toast.success("payment successfully done!")
+        // alert("Payment successful!");
+
     } else {
-        console.log("Payment Not Completed:", verifyRes.data);
-        alert("Payment failed or pending!");
+        // console.log("Payment Not Completed:", verifyRes.data);
+        // alert("Payment failed!");
+        toast.error("Payment Failed!")
+
     }
+
+    return verifyRes;
 }
 
 export const handlePayments = async ({ amount, customerName, customerEmail }) => {
@@ -57,12 +64,14 @@ export const handlePayments = async ({ amount, customerName, customerEmail }) =>
             redirectTarget: "_modal",
         };
 
-        cashfree.checkout(checkoutOptions).then(() => {
-            console.log("Payment initiated");
+        await cashfree.checkout(checkoutOptions)
 
-            //payment verification
-            verifyPayment(orderId)
-        })
+        console.log("Payment process completed, verifying payment...");
+
+
+        // Now verify the payment
+        const verifyRes = await verifyPayment(orderId);
+        return verifyRes;
 
     } catch (error) {
         console.error("Payment Error:", error);
