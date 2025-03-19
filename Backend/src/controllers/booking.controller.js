@@ -40,3 +40,38 @@ export const bookSession = async (req, res) => {
         })
     }
 }
+
+export const getUserBookSession = async (req, res) => {
+    try {
+        const userId = req.user._id
+
+        const bookedSessions = await Booking.find({ userId }).populate({
+            path: "sessionId",
+            select: "mentor serviceName price duration",
+            populate: {
+                path: "mentor",
+                select: "name"
+            }
+        })
+
+        if (!bookedSessions) {
+            return res.status(httpStatus.notFound).json({
+                message: "Not found any session"
+            })
+        }
+
+        return res.status(httpStatus.ok).json({
+            message: "Fecthed booked sessions successfully!",
+            bookedSessions
+        })
+
+    } catch (error) {
+        console.log(error);
+        return res.status(httpStatus.internalServerError).json({
+            message: "Error fecthing user booked session"
+        })
+
+
+    }
+
+}

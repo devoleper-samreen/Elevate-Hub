@@ -7,6 +7,7 @@ import MentorPage from "../pages/MentorsPage"
 import BookSessionPage from "../pages/BookSessionPage"
 import Services from "../pages/Services"
 import Payment from "../pages/Payment"
+import BookedSession from "../pages/BookedSession"
 
 const routes = [
     {
@@ -17,7 +18,7 @@ const routes = [
     {
         path: "/checkout",
         element: <Payment />,
-        isProtected: false
+        isProtected: true
     },
     {
         path: "/signin",
@@ -37,7 +38,7 @@ const routes = [
     {
         path: "/mentors/:username",
         element: <BookSessionPage />,
-        isProtected: false
+        isProtected: true
     },
     {
         path: "/dashboard",
@@ -51,6 +52,10 @@ const routes = [
             {
                 path: "services",
                 element: <Services />
+            },
+            {
+                path: "booked-session",
+                element: <BookedSession />
             }
         ]
     }
