@@ -1,4 +1,5 @@
 import { Cashfree } from "cashfree-pg";
+import { httpStatus } from "../utils/httpStatus.js"
 
 Cashfree.XClientId = process.env.PAYMENT_API_KEY;
 Cashfree.XClientSecret = process.env.PAYMENT_API_SECRET;
@@ -24,83 +25,77 @@ export const checkout = async (req, res) => {
 
         const response = await Cashfree.PGCreateOrder("2022-09-01", request);
 
-        console.log('Order Created successfully:', response.data);
-
-        return res.status(200).json({
+        return res.status(httpStatus.created).json({
             success: true,
             payment_url: response.data.payments.url,
             payment_session_id: response.data.payment_session_id
         });
 
     } catch (error) {
-        console.error('Error:', error?.response?.data?.message || error.message);
-        return res.status(500).json({
+        return res.status(httpStatus.internalServerError).json({
             success: false,
-            message: "Payment failed", error: error.message
+            message: "Payment failed",
+            error: error.message
         });
     }
 };
 
+
 // export const verifyPayment = async (req, res) => {
 //     try {
-//         const data = req.body;
+//         const { orderId } = req.body
 
-//         console.log("Cashfree Webhook Data:", data);
+//         const response = await Cashfree.PGOrderFetchPayments('2023-08-01', orderId)
 
-//         if (data.event === "PAYMENT_SUCCESSFUL") {
-//             console.log(`✅ Payment Successful: Order ID ${data.order.order_id}`);
-
-//             // Yahan database update karo
-//             // await OrderModel.updateOne({ orderId: data.order.order_id }, { status: "PAID" });
-
-//             return res.status(200).json({
-//                 success: true,
-//                 message: "Payment Verified"
-//             });
-
-//         } else if (data.event === "PAYMENT_FAILED") {
-//             console.log(`❌ Payment Failed: Order ID ${data.order.order_id}`);
-
-//             // Payment fail ho gaya, database update karo
-//             // await OrderModel.updateOne({ orderId: data.order.order_id }, { status: "FAILED" });
-
-//             return res.status(400).json({
-//                 success: false,
-//                 message: "Payment Failed"
-//             });
-//         }
-
-//         return res.status(400).json({
-//             success: false,
-//             message: "Invalid Event"
+//         return res.status(httpStatus.ok).json({
+//             success: true,
+//             response: response.data
 //         });
 
 //     } catch (error) {
-//         console.error("Webhook Error:", error);
-//         return res.status(500).json({
-//             success: false,
-//             message: "Webhook Handling Error"
-//         });
+//         console.log(error);
+//         return res.status(httpStatus.internalServerError).json({
+//             message: "Error while payment verification"
+//         })
 //     }
+
 // }
 
 export const verifyPayment = async (req, res) => {
     try {
-        const { orderId } = req.body
-        console.log("orderId:", orderId);
+        const { orderId } = req.body;
+
+        const response = await Cashfree.PGOrderFetchPayments('2023-08-01', orderId);
+        console.log("response:", response);
+
+        const data = response?.data
+        console.log("hamara data:", data);
+        console.log("payment status", data[0].payment_status);
 
 
-        const response = await Cashfree.PGOrderFetchPayments('2023-08-01', orderId)
+        if (data[0].payment_status == 'SUCCESS') {
+            return res.status(httpStatus.ok).json({
+                success: true,
+                message: "Payment successful",
+            });
 
-        return res.json({
-            success: true,
-            response: response.data
-        });
+        } else {
+            return res.status(httpStatus.badRequest).json({
+                success: false,
+                message: "Payment not successful",
+
+            });
+
+        }
 
     } catch (error) {
-        console.log(error);
+        console.error("Error while verifying payment:", error);
+        return res.status(httpStatus.internalServerError).json({
+            success: false,
+            message: "Error while payment verification"
+        });
     }
+};
 
-}
 
 

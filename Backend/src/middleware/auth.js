@@ -11,7 +11,6 @@ export const verifyToken = async (req, res, next) => {
     ) {
         token = req.headers.authorization.split(" ")[1];
     }
-    console.log("frontend se aaya token : ", token);
 
     if (!token) {
         return next(

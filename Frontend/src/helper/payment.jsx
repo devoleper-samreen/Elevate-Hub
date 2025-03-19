@@ -1,5 +1,5 @@
-import axios from "axios";
 import { load } from "@cashfreepayments/cashfree-js";
+import AxiosInstances from "../apiManager";
 
 const initializeSDK = async () => {
     try {
@@ -12,15 +12,14 @@ const initializeSDK = async () => {
 };
 
 const verifyPayment = async (orderId) => {
-    console.log("orderid from verifypayment:", orderId);
 
-    const verifyRes = await axios.post(`http://localhost:3000/api/v1/payment/verify`, {
+    const verifyRes = await AxiosInstances.post('/payment/verify', {
         orderId: orderId
     });
 
     console.log("verify response :", verifyRes)
 
-    if (verifyRes.data.success) {
+    if (verifyRes.data.success == true) {
         console.log("Payment Verified:", verifyRes.data);
         alert("Payment successful!");
     } else {
@@ -39,7 +38,7 @@ export const handlePayments = async ({ amount, customerName, customerEmail }) =>
 
     try {
         const orderId = `order_${Date.now()}`
-        const res = await axios.post("http://localhost:3000/api/v1/payment", {
+        const res = await AxiosInstances.post("/payment", {
             orderId,
             amount,
             customerName,
@@ -60,8 +59,6 @@ export const handlePayments = async ({ amount, customerName, customerEmail }) =>
 
         cashfree.checkout(checkoutOptions).then(() => {
             console.log("Payment initiated");
-
-            console.log("orderid befor payment int: ", orderId);
 
             //payment verification
             verifyPayment(orderId)
