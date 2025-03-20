@@ -1,5 +1,6 @@
 import { httpStatus } from "../utils/httpStatus.js"
 import { Booking } from "../models/booking.model.js"
+import { Service } from "../models/service.model.js"
 
 export const bookSession = async (req, res) => {
     try {
@@ -72,6 +73,32 @@ export const getUserBookSession = async (req, res) => {
         })
 
 
+    }
+
+}
+
+export const getMentorAllBookSession = async (req, res) => {
+    try {
+        const mentorId = req.user._id
+
+        const mentorServices = await Service.find({ mentor: mentorId }).select("_id");
+
+        const sessionIds = mentorServices.map(service => service._id);
+
+        const bookings = await Booking.find({ sessionId: { $in: sessionIds } })
+            .populate("userId", "name email") // Get user details
+            .populate("sessionId", "serviceName price"); // Get session details
+
+        return res.status(httpStatus.ok).json({
+            message: "fetched all booking successfully!",
+            bookings
+        });
+
+    } catch (error) {
+        console.log(error);
+        return res.status(httpStatus.internalServerError).json({
+            message: "Error while fecthing mentor booking"
+        })
     }
 
 }

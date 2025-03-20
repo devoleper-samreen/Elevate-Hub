@@ -8,6 +8,7 @@ import BookSessionPage from "../pages/BookSessionPage"
 import Services from "../pages/Services"
 import Payment from "../pages/Payment"
 import BookedSession from "../pages/BookedSession"
+import MentorBooking from "../pages/MentorBooking"
 
 const routes = [
     {
@@ -56,6 +57,10 @@ const routes = [
             {
                 path: "booked-session",
                 element: <BookedSession />
+            },
+            {
+                path: "booking",
+                element: <MentorBooking />
             }
         ]
     }

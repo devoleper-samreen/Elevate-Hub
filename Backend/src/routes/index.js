@@ -5,6 +5,7 @@ import profileRoute from "./profile.route.js"
 import serviceRoute from "./service.route.js"
 import paymentRoute from "./payment.route.js"
 import bookingRoute from "./booking.route.js"
+import mentorBookingRoute from "./mentorBooking.route.js"
 
 const router = express.Router()
 
@@ -25,5 +26,7 @@ router.use("/payment", paymentRoute)
 
 //for booking
 router.use("/book-session", bookingRoute)
+
+router.use("/mentor-booking", mentorBookingRoute)
 
 export default router

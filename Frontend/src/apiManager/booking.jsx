@@ -7,3 +7,7 @@ export const bookSession = (sessionData) => {
 export const getUserBookedSession = () => {
     return AxiosInstances.get("/book-session")
 }
+
+export const getBooking = () => {
+    return AxiosInstances.get('/mentor-booking')
+}
